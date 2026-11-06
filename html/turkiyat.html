@@ -148,8 +148,14 @@
             <button class="turkiyat-dock-btn" data-module="modKodikoloji">
                 <i class="fa-solid fa-scroll"></i> <span class="dock-label">Kodikoloji Formu</span>
             </button>
+            <button class="turkiyat-dock-btn" data-module="modSozDizimi">
+                <i class="fa-solid fa-diagram-project"></i> <span class="dock-label">Türk Söz Dizimi</span>
+            </button>
             <button class="turkiyat-dock-btn" data-module="modDizin">
                 <i class="fa-solid fa-list-ol"></i> <span class="dock-label">Dizin &amp; Konkordans</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modBitigDiz">
+                <i class="fa-solid fa-table-list"></i> <span class="dock-label">BitigDiz</span>
             </button>
             <button class="turkiyat-dock-btn" data-module="modWiki">
                 <i class="fa-solid fa-globe"></i> <span class="dock-label">Vikipedi &amp; Ansiklopedi</span>
@@ -1180,6 +1186,35 @@
         </section>
 
         <!-- ================================================================= -->
+        <!-- MODÜL: TÜRK SÖZ DİZİMİ                                            -->
+        <!-- ================================================================= -->
+        <section id="modSozDizimi" class="turkiyat-module">
+            <div class="turkiyat-module-heading">
+                <div>
+                    <span class="module-kicker"><i class="fa-solid fa-diagram-project"></i> TÜRK DİLİ ARAŞTIRMALARI</span>
+                    <h2>Türk Söz Dizimi</h2>
+                    <p>Cümleleri yerel ve açıklanabilir kurallarla çözümleyin; öge, sözcük türü, kök ve ek notlarını araştırma tablosunda tutun.</p>
+                </div>
+                <div class="dizin-actions">
+                    <button id="btnSozDizAnalyze" class="ek-btn ek-btn-primary"><i class="fa-solid fa-wand-magic-sparkles"></i> Çözümle</button>
+                    <button id="btnSozDizClear" class="ek-btn"><i class="fa-solid fa-eraser"></i> Temizle</button>
+                    <button id="btnSozDizExport" class="ek-btn ek-btn-secondary"><i class="fa-solid fa-file-csv"></i> CSV</button>
+                </div>
+            </div>
+            <div class="syntax-grid">
+                <div class="dizin-input-panel">
+                    <label for="sozDizInput"><i class="fa-solid fa-align-left"></i> İncelenecek cümle veya metin</label>
+                    <textarea id="sozDizInput" placeholder="Örnek: Araştırmacı eski nüshayı dikkatle inceledi."></textarea>
+                    <p class="dizin-hint"><i class="fa-solid fa-circle-info"></i> Çözümleme yerel kural motorudur; sonuçları akademik kontrol ve düzeltme için tasarlanmıştır.</p>
+                </div>
+                <div id="sozDizSummary" class="dizin-summary">
+                    <div class="dizin-empty"><i class="fa-solid fa-diagram-project"></i><strong>Çözümleme bekleniyor</strong><span>Bir cümle girip Çözümle düğmesine basın.</span></div>
+                </div>
+            </div>
+            <div id="sozDizResults" class="dizin-results"></div>
+        </section>
+
+        <!-- ================================================================= -->
         <!-- MODÜL: DİZİN & KONKORDANS                                         -->
         <!-- ================================================================= -->
         <section id="modDizin" class="turkiyat-module">
@@ -1211,6 +1246,40 @@
                 </div>
             </div>
             <div class="dizin-results" id="dizinResults"></div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL: BİTİGDİZ ARAŞTIRMA İSTASYONU                               -->
+        <!-- ================================================================= -->
+        <section id="modBitigDiz" class="turkiyat-module">
+            <div class="turkiyat-module-heading">
+                <div>
+                    <span class="module-kicker"><i class="fa-solid fa-table-list"></i> METİN DİZİNLEME</span>
+                    <h2>BitigDiz Araştırma İstasyonu</h2>
+                    <p>Lemma, sıklık, satır dizini ve konkordans bağlamlarını tek bir yerel corpus çalışma alanında yönetin.</p>
+                </div>
+                <div class="dizin-actions">
+                    <button id="btnBitigDizAnalyze" class="ek-btn ek-btn-primary"><i class="fa-solid fa-chart-column"></i> Dizinle</button>
+                    <button id="btnBitigDizClear" class="ek-btn"><i class="fa-solid fa-eraser"></i> Temizle</button>
+                    <button id="btnBitigDizExport" class="ek-btn ek-btn-secondary"><i class="fa-solid fa-file-csv"></i> CSV</button>
+                    <button id="btnBitigDizWord" class="ek-btn"><i class="fa-solid fa-file-word"></i> Word</button>
+                </div>
+            </div>
+            <div class="dizin-grid">
+                <div class="dizin-input-panel">
+                    <label for="bitigDizInput"><i class="fa-solid fa-book-open"></i> Corpus metni</label>
+                    <textarea id="bitigDizInput" placeholder="Dizin ve konkordansını çıkarmak istediğiniz metni buraya yapıştırın..."></textarea>
+                    <div class="dizin-settings">
+                        <label><input id="bitigDizStopwords" type="checkbox" checked> Yardımcı kelimeleri gizle</label>
+                        <label for="bitigDizMinLength">En az harf <input id="bitigDizMinLength" type="number" min="1" max="20" value="2"></label>
+                    </div>
+                    <p class="dizin-hint"><i class="fa-solid fa-lock"></i> Metin yalnızca bu bilgisayarda işlenir ve localStorage'a kaydedilir.</p>
+                </div>
+                <div id="bitigDizSummary" class="dizin-summary">
+                    <div class="dizin-empty"><i class="fa-solid fa-table-list"></i><strong>Dizin bekleniyor</strong><span>Metni girip Dizinle düğmesine basın.</span></div>
+                </div>
+            </div>
+            <div id="bitigDizResults" class="dizin-results"></div>
         </section>
 
         <!-- 🏛️ TÜRKİYAT İSTASYON STATÜ BARI & AKADEMİK ALT BİLGİ -->

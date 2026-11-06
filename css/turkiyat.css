@@ -2225,6 +2225,27 @@ body.parchment-mode .station-gh-pill:hover {
   align-items: stretch;
 }
 
+.syntax-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+#sozDizInput,
+#bitigDizInput {
+  display: block;
+  width: 100%;
+  min-height: 235px;
+  resize: vertical;
+  padding: 0.85rem;
+  border: 1px solid var(--border-station);
+  border-radius: var(--radius-sm);
+  background: var(--bg-os);
+  color: var(--text-primary);
+  font: 1rem/1.65 var(--font-serif);
+}
+
 .dizin-input-panel,
 .dizin-summary,
 .dizin-results {
@@ -2379,7 +2400,8 @@ body.parchment-mode #dizinMinLength {
 }
 
 @media (max-width: 760px) {
-  .dizin-grid {
+  .dizin-grid,
+  .syntax-grid {
     grid-template-columns: 1fr;
   }
 }

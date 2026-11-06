@@ -57,7 +57,13 @@
         // 15. Dizin & Konkordans (yerel corpus analizi)
         setupDizinModule();
 
-        // 16. Araştırmacı klavye kısayolları
+        // 16. Türk söz dizimi çözümleyicisi
+        setupSozDizimiModule();
+
+        // 17. BitigDiz araştırma istasyonu
+        setupBitigDizModule();
+
+        // 18. Araştırmacı klavye kısayolları
         setupResearchShortcuts();
     }
 
@@ -1230,6 +1236,151 @@
      * 14. Dizin & Konkordans
      * Analiz tamamen yerelde çalışır; araştırma metni hiçbir sunucuya gönderilmez.
      */
+    function setupSozDizimiModule() {
+        var input = document.getElementById('sozDizInput');
+        var analyzeButton = document.getElementById('btnSozDizAnalyze');
+        var clearButton = document.getElementById('btnSozDizClear');
+        var exportButton = document.getElementById('btnSozDizExport');
+        var summary = document.getElementById('sozDizSummary');
+        var results = document.getElementById('sozDizResults');
+        if (!input || !analyzeButton || !summary || !results) return;
+
+        var latestRows = [];
+        var wordPattern = /[\p{L}\p{M}]+(?:[-'][\p{L}\p{M}]+)*/gu;
+        var verbEndings = ['yor', 'ıyor', 'iyor', 'uyor', 'üyor', 'dı', 'di', 'du', 'dü', 'tı', 'ti', 'tu', 'tü', 'mış', 'miş', 'muş', 'müş', 'acak', 'ecek', 'mak', 'mek', 'r'];
+        var caseEndings = [
+            { ending: 'dan', role: 'Ayrılma tümleci' }, { ending: 'den', role: 'Ayrılma tümleci' },
+            { ending: 'tan', role: 'Ayrılma tümleci' }, { ending: 'ten', role: 'Ayrılma tümleci' },
+            { ending: 'ya', role: 'Yönelme tümleci' }, { ending: 'ye', role: 'Yönelme tümleci' },
+            { ending: 'a', role: 'Yönelme tümleci' }, { ending: 'e', role: 'Yönelme tümleci' },
+            { ending: 'da', role: 'Bulunma tümleci' }, { ending: 'de', role: 'Bulunma tümleci' },
+            { ending: 'ta', role: 'Bulunma tümleci' }, { ending: 'te', role: 'Bulunma tümleci' },
+            { ending: 'ı', role: 'Belirtili nesne' }, { ending: 'i', role: 'Belirtili nesne' },
+            { ending: 'u', role: 'Belirtili nesne' }, { ending: 'ü', role: 'Belirtili nesne' }
+        ];
+
+        function classify(word) {
+            if (verbEndings.some(function(ending) { return word.length > ending.length + 2 && word.endsWith(ending); })) return 'Fiil';
+            if (/^(ve|ile|ama|fakat|çünkü|lakin|ancak|yahut|ya)$/.test(word)) return 'Bağlaç';
+            if (/^(bir|bu|şu|o|her|bazı|hangi|kaç)$/.test(word)) return 'Belirleyici';
+            if (/^(çok|az|daha|en|nasıl|böyle|şöyle)$/.test(word)) return 'Zarf';
+            if (/^(ben|sen|o|biz|siz|onlar|bu|şu)$/.test(word)) return 'Zamir';
+            if (/(lı|li|lu|lü|sız|siz|sal|sel)$/.test(word)) return 'Sıfat';
+            return 'İsim / özel ad';
+        }
+
+        function lemma(word) {
+            var suffixes = ['larımız', 'lerimiz', 'larımızın', 'lerimizin', 'ları', 'leri', 'ının', 'inin', 'unun', 'ünün', 'dan', 'den', 'tan', 'ten', 'dır', 'dir', 'dur', 'dür', 'lar', 'ler', 'ı', 'i', 'u', 'ü', 'a', 'e'];
+            for (var i = 0; i < suffixes.length; i++) {
+                if (word.length > suffixes[i].length + 2 && word.endsWith(suffixes[i])) return word.slice(0, -suffixes[i].length);
+            }
+            return word;
+        }
+
+        function analyze() {
+            var sentences = input.value.split(/(?<=[.!?])\s+|\r?\n/).map(function(item) { return item.trim(); }).filter(Boolean);
+            var rows = [];
+            sentences.forEach(function(sentence, sentenceIndex) {
+                var words = sentence.match(wordPattern) || [];
+                var verbIndex = -1;
+                words.forEach(function(word, index) {
+                    if (classify(word.toLocaleLowerCase('tr-TR')) === 'Fiil' && verbIndex < 0) verbIndex = index;
+                });
+                words.forEach(function(rawWord, index) {
+                    var word = rawWord.toLocaleLowerCase('tr-TR');
+                    var type = classify(word);
+                    var role = 'Belirsiz öge';
+                    var confidence = 'Düşük';
+                    if (type === 'Fiil') { role = 'Yüklem'; confidence = 'Orta'; }
+                    else if (verbIndex >= 0 && index < verbIndex && index === 0) { role = 'Özne adayı'; confidence = 'Orta'; }
+                    else {
+                        var ending = caseEndings.find(function(item) { return word.endsWith(item.ending) && word.length > item.ending.length + 2; });
+                        if (ending) { role = ending.role; confidence = 'Orta'; }
+                        else if (verbIndex >= 0 && index < verbIndex) { role = 'Belirtili / belirtisiz nesne adayı'; confidence = 'Düşük'; }
+                    }
+                    rows.push({ sentence: sentenceIndex + 1, word: rawWord, lemma: lemma(word), type: type, role: role, confidence: confidence });
+                });
+            });
+            latestRows = rows;
+            summary.innerHTML = '<div class="dizin-stat-grid"><div class="dizin-stat"><b>' + sentences.length + '</b><span>Cümle</span></div><div class="dizin-stat"><b>' + rows.length + '</b><span>Sözcük</span></div><div class="dizin-stat"><b>' + rows.filter(function(row) { return row.role === 'Yüklem'; }).length + '</b><span>Yüklem</span></div><div class="dizin-stat"><b>' + rows.filter(function(row) { return row.confidence === 'Orta'; }).length + '</b><span>Orta güven</span></div></div>';
+            results.innerHTML = '<div class="dizin-table-wrap"><table class="dizin-table"><thead><tr><th>Cümle</th><th>Sözcük</th><th>Lemma adayı</th><th>Tür</th><th>Öge</th><th>Güven</th></tr></thead><tbody>' +
+                rows.map(function(row) { return '<tr><td>' + row.sentence + '</td><td>' + escapeHtml(row.word) + '</td><td>' + escapeHtml(row.lemma) + '</td><td>' + row.type + '</td><td>' + row.role + '</td><td>' + row.confidence + '</td></tr>'; }).join('') +
+                '</tbody></table></div>';
+            showToast('Türk söz dizimi çözümlemesi tamamlandı.');
+        }
+
+        function exportCsv() {
+            if (!latestRows.length) { showToast('Önce çözümleme yapınız.'); return; }
+            var csv = '\uFEFFCümle;Sözcük;Lemma adayı;Tür;Öge;Güven\r\n' + latestRows.map(function(row) {
+                return [row.sentence, row.word, row.lemma, row.type, row.role, row.confidence].map(function(value) { return '"' + String(value).replace(/"/g, '""') + '"'; }).join(';');
+            }).join('\r\n');
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+            link.download = 'bitigey-turk-soz-dizimi.csv';
+            link.click();
+            URL.revokeObjectURL(link.href);
+        }
+
+        analyzeButton.addEventListener('click', analyze);
+        exportButton.addEventListener('click', exportCsv);
+        clearButton.addEventListener('click', function() { input.value = ''; latestRows = []; summary.innerHTML = ''; results.innerHTML = ''; });
+    }
+
+    function setupBitigDizModule() {
+        var input = document.getElementById('bitigDizInput');
+        var analyzeButton = document.getElementById('btnBitigDizAnalyze');
+        var clearButton = document.getElementById('btnBitigDizClear');
+        var exportButton = document.getElementById('btnBitigDizExport');
+        var wordButton = document.getElementById('btnBitigDizWord');
+        var summary = document.getElementById('bitigDizSummary');
+        var results = document.getElementById('bitigDizResults');
+        if (!input || !analyzeButton || !summary || !results) return;
+        var latestRows = [];
+        var stopwords = { ve: true, ile: true, bir: true, bu: true, şu: true, o: true, da: true, de: true, ki: true, için: true, gibi: true, ise: true, ama: true, veya: true };
+        var wordPattern = /[\p{L}\p{M}]+(?:[-'][\p{L}\p{M}]+)*/gu;
+        function run() {
+            var counts = Object.create(null);
+            var lines = input.value.split(/\r?\n/);
+            lines.forEach(function(line, index) {
+                (line.match(wordPattern) || []).forEach(function(raw) {
+                    var word = raw.toLocaleLowerCase('tr-TR');
+                    if (word.length < Math.max(1, Number(document.getElementById('bitigDizMinLength').value) || 2) || (document.getElementById('bitigDizStopwords').checked && stopwords[word])) return;
+                    if (!counts[word]) counts[word] = { word: word, lemma: word, count: 0, lines: [], contexts: [] };
+                    counts[word].count++;
+                    if (counts[word].lines.indexOf(index + 1) < 0) counts[word].lines.push(index + 1);
+                    if (counts[word].contexts.length < 5) counts[word].contexts.push('s.' + (index + 1) + ': ' + line.trim());
+                });
+            });
+            latestRows = Object.keys(counts).map(function(key) { return counts[key]; }).sort(function(a, b) { return b.count - a.count || a.word.localeCompare(b.word, 'tr'); });
+            summary.innerHTML = '<div class="dizin-stat-grid"><div class="dizin-stat"><b>' + lines.join(' ').trim().split(/\s+/).filter(Boolean).length + '</b><span>Toplam kelime</span></div><div class="dizin-stat"><b>' + latestRows.length + '</b><span>Tekil lemma</span></div><div class="dizin-stat"><b>' + lines.length + '</b><span>Satır</span></div><div class="dizin-stat"><b>' + (latestRows.length ? latestRows[0].count : 0) + '</b><span>En yüksek sıklık</span></div></div>';
+            results.innerHTML = '<div class="dizin-table-wrap"><table class="dizin-table"><thead><tr><th>Kelime / lemma</th><th>Sıklık</th><th>Satırlar</th><th>Konkordans</th></tr></thead><tbody>' + latestRows.map(function(row) {
+                return '<tr><td>' + escapeHtml(row.word) + '</td><td>' + row.count + '</td><td>' + row.lines.join(', ') + '</td><td class="dizin-context">' + escapeHtml(row.contexts.join(' | ')) + '</td></tr>';
+            }).join('') + '</tbody></table></div>';
+            try { localStorage.setItem('bitigey_bitigdiz_corpus', input.value); } catch (error) {}
+            showToast('BitigDiz dizini hazırlandı.');
+        }
+        function download(kind) {
+            if (!latestRows.length) { showToast('Önce dizinleme yapınız.'); return; }
+            var rows = latestRows.map(function(row) { return [row.word, row.lemma, row.count, row.lines.join(', '), row.contexts.join(' | ')]; });
+            var payload;
+            var filename;
+            var type;
+            if (kind === 'csv') {
+                payload = '\uFEFFKelime;Lemma;Sıklık;Satırlar;Konkordans\r\n' + rows.map(function(row) { return row.map(function(value) { return '"' + String(value).replace(/"/g, '""') + '"'; }).join(';'); }).join('\r\n');
+                filename = 'bitigey-bitigdiz.csv'; type = 'text/csv;charset=utf-8';
+            } else {
+                payload = '<!doctype html><meta charset="utf-8"><h1>BitigeyDiz Araştırma İstasyonu</h1><table border="1"><tr><th>Kelime</th><th>Lemma</th><th>Sıklık</th><th>Satırlar</th><th>Konkordans</th></tr>' + rows.map(function(row) { return '<tr>' + row.map(function(value) { return '<td>' + escapeHtml(value) + '</td>'; }).join('') + '</tr>'; }).join('') + '</table>';
+                filename = 'bitigey-bitigdiz.doc'; type = 'application/msword;charset=utf-8';
+            }
+            var link = document.createElement('a'); link.href = URL.createObjectURL(new Blob([payload], { type: type })); link.download = filename; link.click(); URL.revokeObjectURL(link.href);
+        }
+        try { input.value = localStorage.getItem('bitigey_bitigdiz_corpus') || ''; } catch (error) {}
+        analyzeButton.addEventListener('click', run);
+        exportButton.addEventListener('click', function() { download('csv'); });
+        if (wordButton) wordButton.addEventListener('click', function() { download('doc'); });
+        clearButton.addEventListener('click', function() { input.value = ''; latestRows = []; summary.innerHTML = ''; results.innerHTML = ''; });
+    }
+
     function setupDizinModule() {
         var input = document.getElementById('dizinInput');
         var analyzeButton = document.getElementById('btnDizinAnalyze');
