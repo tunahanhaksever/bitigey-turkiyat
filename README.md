@@ -17,6 +17,7 @@ yedekleri bu repository'nin parçası değildir.
 - Dizin ve konkordans analizi
 - TEI-XML, LaTeX, CSV, TXT, Word ve JSON dışa aktarma
 - Windows masaüstü uygulaması (Electron)
+- Python tabanlı yerel dizinleme motoru (`python/bitigey_dizin.py`)
 
 ## Geliştirme
 
@@ -33,6 +34,18 @@ npm.cmd run desktop:dist
 
 Çıktı `downloads/` klasörüne yazılır. Bu klasör Git'e gönderilmez; yayınlama
 için GitHub Releases veya Bitigey'in indirme sunucusu kullanılmalıdır.
+
+## Python dizinleme motoru
+
+Yerel metin frekansı, satır konumu ve CSV/Excel dışa aktarımı için:
+
+```powershell
+py -m pip install -r python\requirements.txt
+py python\bitigey_dizin.py
+```
+
+Motor Türkçe `I/İ` dönüşümünü ve `ā â î û ç ğ ı i ö ş ü ḫ ñ ḳ ṣ ṭ ż`
+transkripsiyon karakterlerini korur. Metin dışarı gönderilmez.
 
 ## Proje yapısı
 
