@@ -1,0 +1,30 @@
+# Dependencies and local build output
+node_modules/
+downloads/
+dist/
+release/
+
+# Local data, exports and backups
+json/backup-*.json
+json/cors.json
+scratch/
+*.local
+*.log
+
+# Local secrets and deployment state
+.env
+.env.*
+!.env.example
+.wrangler/
+cloudflare/**/.dev.vars
+cloudflare/**/.env
+*.pem
+*.key
+*.p12
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json

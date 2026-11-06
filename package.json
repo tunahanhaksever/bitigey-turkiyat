@@ -1,0 +1,65 @@
+{
+  "name": "bitigey-turkiyat",
+  "version": "1.0.0",
+  "description": "Bitigey Türkiyat dijital filoloji ve şarkiyat araştırma istasyonu.",
+  "main": "electron/main.cjs",
+  "author": "Bitigey",
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "pdfkit": "^0.19.1",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.35.5"
+  },
+  "scripts": {
+    "auto-static": "node auto-static-generator.js",
+    "generate": "node generate-static.js",
+    "desktop": "electron .",
+    "desktop:dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "com.bitigey.turkiyat",
+    "productName": "Bitigey Türkiyat",
+    "directories": {
+      "output": "downloads"
+    },
+    "files": [
+      "electron/**/*",
+      "html/turkiyat.html",
+      "css/main.css",
+      "css/premium-base.css",
+      "css/responsive-fix.css",
+      "css/edisyon-kritik.css",
+      "css/turkiyat.css",
+      "css/turkiyat-desktop.css",
+      "js/edisyon-kritik-engine.js",
+      "js/edisyon-kritik-ui.js",
+      "js/aruz-engine.js",
+      "js/turkiyat-sozluk-engine.js",
+      "js/ebced-engine.js",
+      "js/kodikoloji-engine.js",
+      "js/turkiyat-rss-engine.js",
+      "js/kiril-engine.js",
+      "js/turkiyat-wiki-engine.js",
+      "js/turkiyat-app.js",
+      "img/favicon.png",
+      "rss.xml",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "artifactName": "Bitigey-Turkiyat-Setup.exe",
+      "icon": "img/favicon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Bitigey Türkiyat"
+    }
+  }
+}

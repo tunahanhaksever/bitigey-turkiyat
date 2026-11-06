@@ -1,0 +1,1016 @@
+/* ==========================================================================
+   BİTİGEY EDİSYON KRİTİK & VARYANT TEZGAHI (AKADEMİK STİL DOSYASI)
+   Tasarım: Prestijli Klasik Kütüphane, Parşömen & Mürekkep Estetiği
+   Tipografi: EB Garamond, Amiri, Inter, JetBrains Mono
+   Standartlar: TDV İA, TÜBA, YÖK Edisyon Kritik Kılavuzu
+   İletişim: contact@bitigey.com
+   ========================================================================== */
+
+:root {
+  /* Karanlık Akademi (Midnight Library) Renk Paleti */
+  --bg-primary: #0a0d14;
+  --bg-secondary: #121722;
+  --bg-card: #18202e;
+  --bg-subtle: #1e293b;
+  --border-color: #2e384d;
+  --border-subtle: #1f2737;
+  
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-bright: #ffffff;
+  
+  --accent-gold: #d4af37;
+  --accent-gold-light: #f3cf65;
+  --accent-gold-dark: #aa8620;
+  --accent-gold-bg: rgba(212, 175, 55, 0.12);
+  --accent-gold-border: rgba(212, 175, 55, 0.35);
+
+  --accent-blue: #60a5fa;
+  --accent-blue-bg: rgba(96, 165, 250, 0.12);
+  
+  /* Varyant Belirteçleri (Akademik Standart) */
+  --var-subst-bg: rgba(245, 158, 11, 0.22);
+  --var-subst-border: #f59e0b;
+  --var-subst-text: #fcd34d;
+
+  --var-omit-bg: rgba(239, 68, 68, 0.2);
+  --var-omit-border: #ef4444;
+  --var-omit-text: #fca5a5;
+
+  --var-add-bg: rgba(16, 185, 129, 0.22);
+  --var-add-border: #10b981;
+  --var-add-text: #6ee7b7;
+
+  /* Tipografi Değişkenleri */
+  --font-serif: 'EB Garamond', 'Amiri', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  --editor-font-size: 17px;
+  --editor-line-height: 2.1;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.35);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.5);
+  --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+/* 📜 Açık Parşömen / Yazma Eser Modu (Akademisyenler İçin Özel) */
+body.parchment-mode {
+  --bg-primary: #f6f3e8;
+  --bg-secondary: #ede7d6;
+  --bg-card: #fdfbf7;
+  --bg-subtle: #e4dcc7;
+  --border-color: #d1c5a9;
+  --border-subtle: #dfd4bb;
+  
+  --text-main: #2a221b;
+  --text-muted: #695b4e;
+  --text-bright: #120e0a;
+  
+  --accent-gold: #8d6219;
+  --accent-gold-light: #6e4b0f;
+  --accent-gold-bg: rgba(141, 98, 25, 0.08);
+  --accent-gold-border: rgba(141, 98, 25, 0.35);
+  
+  --var-subst-bg: #fef3c7;
+  --var-subst-border: #b45309;
+  --var-subst-text: #78350f;
+
+  --var-omit-bg: #fee2e2;
+  --var-omit-border: #b91c1c;
+  --var-omit-text: #7f1d1d;
+
+  --var-add-bg: #dcfce7;
+  --var-add-border: #15803d;
+  --var-add-text: #14532d;
+
+  --shadow-sm: 0 2px 8px rgba(90, 70, 45, 0.08);
+  --shadow-md: 0 8px 24px rgba(90, 70, 45, 0.12);
+  --shadow-gold: 0 0 20px rgba(141, 98, 25, 0.1);
+}
+
+/* Sıfırlama ve Gövde */
+* {
+  box-sizing: border-box;
+}
+
+body.edisyon-kritik-body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* 🏆 Üst Başlık (Academic Masterpiece Banner) */
+.ek-header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.ek-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.ek-header-inner {
+  max-width: 1750px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.ek-title-area h1 {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin: 0;
+  letter-spacing: 0.015em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ek-title-area h1 .badge-academic {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  background: var(--accent-gold-bg);
+  border: 1px solid var(--accent-gold-border);
+  color: var(--accent-gold);
+  border-radius: var(--radius-sm);
+}
+
+.ek-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+  max-width: 950px;
+  line-height: 1.55;
+}
+
+.ek-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+/* Buton Tasarımları */
+.ek-btn {
+  font-family: var(--font-sans);
+  font-size: 0.83rem;
+  font-weight: 600;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.15s ease;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  text-decoration: none;
+  user-select: none;
+}
+
+.ek-btn:hover {
+  background: var(--bg-subtle);
+  color: var(--text-bright);
+  border-color: var(--accent-gold);
+}
+
+.ek-btn-primary {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #111;
+  font-weight: 700;
+  box-shadow: var(--shadow-gold);
+}
+
+.ek-btn-primary:hover {
+  background: var(--accent-gold-light);
+  border-color: var(--accent-gold-light);
+  color: #000;
+  transform: translateY(-1px);
+}
+
+.ek-btn-secondary {
+  background: var(--accent-blue-bg);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.ek-btn-secondary:hover {
+  background: var(--accent-blue);
+  color: #000;
+}
+
+/* 🎛️ Meta Bar & Tipografi Kontrol Araçları */
+.ek-meta-bar {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.85rem 2rem;
+  font-size: 0.85rem;
+}
+
+.ek-meta-inner {
+  max-width: 1750px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ek-meta-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ek-meta-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.ek-select, .ek-input {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.84rem;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.ek-select:focus, .ek-input:focus {
+  border-color: var(--accent-gold);
+}
+
+/* Tipografi & Görsel Ayar Butonları */
+.ek-font-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+}
+
+.ek-font-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 2px;
+  transition: all 0.15s;
+}
+
+.ek-font-btn:hover {
+  background: var(--bg-card);
+  color: var(--accent-gold);
+}
+
+/* ⌨️ Çeviriyazı (Transkripsiyon) Klavye Şeridi */
+.ek-transcription-bar {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 45;
+  box-shadow: var(--shadow-sm);
+}
+
+.ek-transcription-inner {
+  max-width: 1750px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+}
+
+.ek-transcription-title {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--accent-gold);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ek-transcription-keys {
+  display: flex;
+  gap: 0.28rem;
+  flex-wrap: nowrap;
+}
+
+.ek-char-btn {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 0.45rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  user-select: none;
+}
+
+.ek-char-btn:hover {
+  background: var(--accent-gold-bg);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.ek-char-btn:active {
+  transform: translateY(0);
+}
+
+/* 🏛️ Ana Çalışma Tezgahı (Grid Layout) */
+.ek-workspace {
+  max-width: 1750px;
+  margin: 1.5rem auto 3rem;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+/* Nüshalar Karşılaştırma Izgarası */
+.ek-witness-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  transition: grid-template-columns 0.25s ease;
+}
+
+.ek-witness-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.ek-witness-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.ek-witness-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Tekil Nüsha Paneli */
+.ek-witness-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ek-witness-card:hover {
+  border-color: var(--border-color);
+}
+
+.ek-witness-card.is-base {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 1px var(--accent-gold), var(--shadow-sm);
+}
+
+.ek-witness-card-header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.ek-witness-siglum {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text-bright);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.ek-witness-card.is-base .ek-witness-siglum {
+  color: var(--accent-gold);
+}
+
+.ek-base-badge {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  background: var(--accent-gold);
+  color: #111;
+  border-radius: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ek-witness-meta-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ek-witness-meta-inputs input {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-size: 0.78rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: var(--radius-sm);
+  width: 160px;
+}
+
+/* Editör / Görünüm Sekmeleri */
+.ek-card-tab-bar {
+  display: flex;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.85rem 0;
+  gap: 0.4rem;
+}
+
+.ek-card-tab {
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid transparent;
+  border-bottom: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ek-card-tab:hover {
+  color: var(--text-bright);
+}
+
+.ek-card-tab.active {
+  background: var(--bg-card);
+  color: var(--text-bright);
+  border-color: var(--border-color);
+  font-weight: 600;
+  border-top: 2px solid var(--accent-gold);
+}
+
+/* Nüsha Metin Alanı (Yazma Eser Tipografisi) */
+.ek-witness-editor-wrap {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.ek-witness-textarea {
+  width: 100%;
+  height: 100%;
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  border: none;
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-family: var(--font-serif);
+  font-size: var(--editor-font-size);
+  line-height: var(--editor-line-height);
+  resize: none;
+  outline: none;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  tab-size: 4;
+}
+
+/* Karşılaştırma / Renkli Varyant Görünümü */
+.ek-witness-diffview {
+  width: 100%;
+  height: 100%;
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  background: var(--bg-card);
+  font-family: var(--font-serif);
+  font-size: var(--editor-font-size);
+  line-height: var(--editor-line-height);
+  overflow-y: auto;
+  white-space: pre-wrap;
+  display: none;
+}
+
+.ek-witness-diffview.active {
+  display: block;
+}
+
+.ek-diff-line {
+  display: flex;
+  align-items: baseline;
+  padding: 0.2rem 0;
+  border-bottom: 1px dashed var(--border-subtle);
+  transition: background 0.1s;
+}
+
+.ek-diff-line:hover {
+  background: rgba(212, 175, 55, 0.04);
+}
+
+.ek-diff-linenum {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  width: 46px;
+  flex-shrink: 0;
+  user-select: none;
+  font-weight: 500;
+}
+
+.ek-diff-content {
+  flex-grow: 1;
+}
+
+/* 🎨 Varyant Vurguları (Zarif ve Bilimsel) */
+.var-subst {
+  background: var(--var-subst-bg);
+  border-bottom: 2px solid var(--var-subst-border);
+  color: var(--var-subst-text);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  cursor: help;
+  position: relative;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.var-subst:hover {
+  background: rgba(245, 158, 11, 0.35);
+}
+
+.var-omit {
+  background: var(--var-omit-bg);
+  border-bottom: 2px solid var(--var-omit-border);
+  color: var(--var-omit-text);
+  text-decoration: line-through;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  cursor: help;
+  font-style: italic;
+}
+
+.var-add {
+  background: var(--var-add-bg);
+  border-bottom: 2px solid var(--var-add-border);
+  color: var(--var-add-text);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-weight: 700;
+  cursor: help;
+}
+
+.var-lemma-mark {
+  background: var(--accent-gold-bg);
+  border-bottom: 2px solid var(--accent-gold);
+  padding: 0.15rem 0.35rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+/* Aparat Dipnot Numaratörü (Süperskript) */
+.ek-footnote-sup {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  vertical-align: super;
+  margin-left: 0.15rem;
+  padding: 0 0.25rem;
+}
+
+/* Alt İstatistik & Senkron Kaydırma Çubuğu */
+.ek-witness-card-footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 📜 Otomatik Üretilen Aparat Paneli (Apparatus Criticus Deck) */
+.ek-apparatus-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.ek-apparatus-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ek-apparatus-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ek-apparatus-title i {
+  color: var(--accent-gold);
+}
+
+.ek-apparatus-controls {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Aparat Liste Alanı */
+.ek-apparatus-list {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.ek-apparatus-entry {
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background 0.12s ease;
+}
+
+.ek-apparatus-entry:hover {
+  background: var(--bg-secondary);
+}
+
+.ek-app-num {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  min-width: 32px;
+}
+
+.ek-app-location {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  min-width: 52px;
+}
+
+.ek-app-lemma {
+  font-weight: 700;
+  color: var(--text-bright);
+}
+
+.ek-app-bracket {
+  color: var(--accent-gold);
+  font-weight: 700;
+  margin: 0 0.2rem;
+}
+
+.ek-app-readings {
+  color: var(--text-main);
+  flex-grow: 1;
+}
+
+.ek-app-sigla {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--accent-blue);
+  background: var(--accent-blue-bg);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  margin-left: 0.35rem;
+  border: 1px solid rgba(96, 165, 250, 0.25);
+}
+
+.ek-app-empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 1rem;
+}
+
+/* 🏛️ Bilgi Kartı & İletişim Alanı (Akademik Kurumsal) */
+.ek-academic-contact-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.75rem;
+}
+
+.ek-contact-info h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--text-bright);
+  margin: 0 0 0.65rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ek-contact-info p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0 0 0.85rem 0;
+  line-height: 1.65;
+}
+
+.ek-contact-email-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--accent-gold);
+  padding: 0.7rem 1.25rem;
+  border-radius: var(--radius-sm);
+  color: var(--accent-gold-light);
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.ek-contact-email-card:hover {
+  background: var(--accent-gold-bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.ek-stats-summary {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.ek-stat-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  border-bottom: 1px dashed var(--border-subtle);
+  padding-bottom: 0.4rem;
+}
+
+.ek-stat-val {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+/* 📦 Genişletilmiş Dışa Aktarma Penceresi (Modal) */
+.ek-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.ek-modal-backdrop.active {
+  display: flex;
+}
+
+.ek-modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 820px;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+}
+
+.ek-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.ek-modal-header h2 {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  margin: 0;
+  color: var(--text-bright);
+}
+
+.ek-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.ek-modal-close:hover {
+  color: var(--accent-gold);
+}
+
+.ek-export-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
+  margin-bottom: 1.75rem;
+}
+
+.ek-export-card {
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.ek-export-card:hover {
+  border-color: var(--accent-gold);
+  background: var(--accent-gold-bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.ek-export-card i {
+  font-size: 1.85rem;
+  color: var(--accent-gold);
+  margin-bottom: 0.25rem;
+}
+
+.ek-export-card h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text-bright);
+}
+
+.ek-export-card p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* Toast Bildirimi */
+.ek-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-gold);
+  color: var(--text-bright);
+  padding: 0.85rem 1.35rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  z-index: 120;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ek-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Responsive / Mobil Düzen */
+@media (max-width: 1200px) {
+  .ek-witness-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .ek-academic-contact-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .ek-header, .ek-meta-bar, .ek-transcription-bar, .ek-workspace {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .ek-header-inner, .ek-meta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ek-export-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Baskı / Yazdırma Modu */
+@media print {
+  .ek-header-actions, .ek-meta-bar, .ek-transcription-bar, .ek-card-tab-bar, .ek-apparatus-controls, .ek-academic-contact-box, .ek-toast, header, footer {
+    display: none !important;
+  }
+  body.edisyon-kritik-body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .ek-witness-card {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .ek-apparatus-section {
+    border: none !important;
+    border-top: 1px solid #000 !important;
+  }
+}

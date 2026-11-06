@@ -1,0 +1,25 @@
+name: Validate Bitigey Türkiyat
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Check JavaScript syntax
+        run: |
+          node --check js/turkiyat-app.js
+          node --check js/edisyon-kritik-ui.js
+          node --check electron/main.cjs

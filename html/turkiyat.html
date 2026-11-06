@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Bitigey Türkiyat | Dijital Filoloji, Edisyon Kritik &amp; Şarkiyat İstasyonu</title>
+    <meta name="description" content="Bitigey Türkiyat: Yüksek Lisans ve Doktora tezleri için entegre akademik istasyon. Edisyon kritik varyant tezgahı, aruz vezni ölçer, TDV İA transkripsiyon dönüştürücü, Kâmus lügatı ve canlı Türkiyat RSS bülteni.">
+    <meta name="keywords" content="bitigey türkiyat, edisyon kritik, aruz vezni bulucu, aruz ölçer, şarkiyat enstitüsü, türkoloji araştırmaları, transkripsiyon klavyesi, tei-xml, tde tezleri, contact@bitigey.com">
+    <meta name="author" content="Bitigey Türkiyat &amp; contact@bitigey.com">
+    <meta name="robots" content="index, follow">
+
+    <link rel="alternate" type="application/rss+xml" title="Bitigey RSS Beslemesi" href="https://www.bitigey.com/rss.xml">
+    <link rel="canonical" href="https://www.bitigey.com/html/turkiyat.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.bitigey.com/html/turkiyat.html">
+    <meta property="og:title" content="Bitigey Türkiyat | Dijital Filoloji &amp; Metin Neşri İstasyonu">
+    <meta property="og:description" content="Türkiyat, Şarkiyat ve TDE araştırmacıları için tek linkte entegre akademik çalışma istasyonu.">
+    <meta property="og:image" content="https://www.bitigey.com/img/bitigey-og-banner.jpg">
+    <meta property="og:site_name" content="Bitigey Türkiyat">
+
+    <!-- Google Fonts: Klasik Yazma Eser & Filoloji Tipografisi -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stiller -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/premium-base.css">
+    <link rel="stylesheet" href="../css/responsive-fix.css">
+    <link rel="stylesheet" href="../css/edisyon-kritik.css">
+    <link rel="stylesheet" href="../css/turkiyat.css">
+    <link rel="stylesheet" href="../css/turkiyat-desktop.css">
+
+    <!-- Schema.org SEO Graph -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://www.bitigey.com/html/turkiyat.html#app",
+          "name": "Bitigey Türkiyat Araştırma İstasyonu",
+          "url": "https://www.bitigey.com/html/turkiyat.html",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "All",
+          "description": "Türkiyat, Şarkiyat ve Türk Dili Edebiyatı lisansüstü tezleri için çoklu nüsha edisyon kritik tezgahı, aruz vezni analizörü, transkripsiyon dönüştürücü ve canlı akademik neşir bülteni.",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" },
+          "provider": { "@type": "Organization", "name": "Bitigey", "url": "https://www.bitigey.com", "email": "contact@bitigey.com" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://www.bitigey.com/" },
+            { "@type": "ListItem", "position": 2, "name": "İçerikler", "item": "https://www.bitigey.com/html/eserler.html" },
+            { "@type": "ListItem", "position": 3, "name": "Bitigey Türkiyat", "item": "https://www.bitigey.com/html/turkiyat.html" }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body class="turkiyat-body">
+    <script>
+        if (new URLSearchParams(window.location.search).get('desktop') === '1' ||
+            window.location.protocol === 'file:') {
+            document.body.classList.add('desktop-app');
+        }
+    </script>
+
+    <!-- 🌟 1. FİYAKALI AÇILIŞ (SPLASH BOOT SEKANSI) -->
+    <div class="turkiyat-splash-overlay" id="turkiyatSplash">
+        <div class="splash-emblem">
+            <i class="fa-solid fa-feather-pointed"></i>
+        </div>
+        <h1 class="splash-title">Bitigey Türkiyat</h1>
+        <div class="splash-subtitle">Dijital Filoloji &amp; Şarkiyat İstasyonu</div>
+        <div class="splash-progress-container">
+            <div class="splash-progress-bar" id="splashProgressBar"></div>
+        </div>
+        <div class="splash-log" id="splashLogText">İstasyon Başlatılıyor...</div>
+        <div class="splash-skip-hint">Geçmek için tıklayınız veya ESC basınız</div>
+    </div>
+
+    <!-- 🏛️ 2. İSTASYON ÜST BARI (TOP OS BAR) -->
+    <header class="turkiyat-top-bar">
+        <a href="../index.html" class="station-brand">
+            <div class="station-seal">
+                <i class="fa-solid fa-scroll"></i>
+            </div>
+            <div class="station-title-text">
+                <h2>Bitigey Türkiyat <span class="badge-academic" style="font-size:0.68rem; margin-left:0.3rem;">v2.0</span></h2>
+                <div class="station-tagline">Dijital Filoloji, Metin Neşri &amp; Şarkiyat Araştırmaları İstasyonu</div>
+            </div>
+        </a>
+
+        <div class="station-actions">
+            <span class="station-save-badge" id="turkiyatSaveStatus" title="Yapılan değişiklikler bu cihaza/tarayıcıya otomatik kaydedilir">
+                <i class="fa-solid fa-floppy-disk"></i> <span class="btn-text">Cihaza Kaydedildi</span>
+            </span>
+            <a href="bitigey-seo.html" class="bitigey-seo-badge" title="Bitigey SEO Entegrasyon Motoru">
+                <i class="fa-solid fa-bolt-lightning"></i> <span class="btn-text">Bitigey SEO ile Güçlendirilmiştir</span>
+            </a>
+            <button id="btnStationPlugins" class="ek-btn" title="İstasyon Eklentileri & Araçlar (KÖG Radyo, vb.)">
+                <i class="fa-solid fa-puzzle-piece"></i> <span class="btn-text">Eklentiler</span> <span id="pluginBadgeCount" class="badge-academic" style="padding:1px 6px; font-size:0.7rem;">1</span>
+            </button>
+            <button id="btnStationTheme" class="ek-btn" title="Koyu Mürekkep veya Açık Parşömen Modu">
+                <i class="fa-solid fa-book-open"></i> <span class="btn-text">Parşömen Modu</span>
+            </button>
+            <button id="btnStationFullscreen" class="ek-btn" title="Tam Ekran Odaklanma">
+                <i class="fa-solid fa-expand"></i> <span class="btn-text">Tam Ekran</span>
+            </button>
+            <a href="mailto:contact@bitigey.com" class="ek-btn ek-btn-primary" style="text-decoration:none;" title="Akademik İletişim">
+                <i class="fa-regular fa-envelope"></i> <span class="btn-text">contact@bitigey.com</span>
+            </a>
+            <a href="../index.html" class="ek-btn" title="Ana Sayfaya Dön">
+                <i class="fa-solid fa-house"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- 🧭 3. MODÜL SEÇİCİ DOCK BARI (APP DOCK) -->
+    <div class="turkiyat-dock-wrapper">
+        <button type="button" id="dockScrollLeft" class="dock-nav-arrow dock-arrow-left" aria-label="Sola Kaydır" title="Sola Kaydır">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <nav class="turkiyat-dock-bar" id="turkiyatDockBar">
+            <button class="turkiyat-dock-btn active" data-module="modEdisyon">
+                <i class="fa-solid fa-scroll"></i> <span class="dock-label">Edisyon Kritik</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modAruz">
+                <i class="fa-solid fa-scale-balanced"></i> <span class="dock-label">Aruz Vezni</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modTranskripsiyon">
+                <i class="fa-solid fa-font"></i> <span class="dock-label">Çeviriyazı</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modKamus">
+                <i class="fa-solid fa-book-bookmark"></i> <span class="dock-label">Sözlük (Lügat)</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modEbced">
+                <i class="fa-solid fa-calculator"></i> <span class="dock-label">Ebced &amp; Tarih</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modKodikoloji">
+                <i class="fa-solid fa-scroll"></i> <span class="dock-label">Kodikoloji Formu</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modDizin">
+                <i class="fa-solid fa-list-ol"></i> <span class="dock-label">Dizin &amp; Konkordans</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modWiki">
+                <i class="fa-solid fa-globe"></i> <span class="dock-label">Vikipedi &amp; Ansiklopedi</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modKiril">
+                <i class="fa-solid fa-language"></i> <span class="dock-label">Orta Asya Kiril Çevirici</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modKaynakca">
+                <i class="fa-solid fa-quote-right"></i> <span class="dock-label">Tez Kaynakça</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modRss">
+                <i class="fa-solid fa-tower-broadcast"></i> <span class="dock-label">Canlı RSS Bülteni</span>
+            </button>
+            <button class="turkiyat-dock-btn" data-module="modEkosistem">
+                <i class="fa-solid fa-sitemap"></i> <span class="dock-label">Bitigey Ekosistemi</span>
+            </button>
+            <a href="turkiyat-mazmun-agi.html" class="turkiyat-dock-btn" style="text-decoration:none;">
+                <i class="fa-solid fa-diagram-project"></i> <span class="dock-label">Mazmun Ağı</span>
+            </a>
+            <a href="turkiyat-lehce.html" class="turkiyat-dock-btn" style="text-decoration:none;">
+                <i class="fa-solid fa-code-branch"></i> <span class="dock-label">Lehçe Karşılaştırma</span>
+            </a>
+            <a href="turkiyat-halk-edebiyati.html" class="turkiyat-dock-btn" style="text-decoration:none;">
+                <i class="fa-solid fa-music"></i> <span class="dock-label">Halk Edebiyatı</span>
+            </a>
+            <a href="turkiyat-tezkire.html" class="turkiyat-dock-btn" style="text-decoration:none;">
+                <i class="fa-solid fa-users"></i> <span class="dock-label">Tezkire Ağı</span>
+            </a>
+            <a href="turkiyat-zaman-cizelgesi.html" class="turkiyat-dock-btn" style="text-decoration:none;">
+                <i class="fa-solid fa-timeline"></i> <span class="dock-label">Zaman Çizelgesi</span>
+            </a>
+        </nav>
+        <button type="button" id="dockScrollRight" class="dock-nav-arrow dock-arrow-right" aria-label="Sağa Kaydır" title="Sağa Kaydır">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- ✨ AKTİF EKLENTİ TEPSİSİ -->
+    <div class="plugin-tray hidden" id="pluginTray">
+        <span class="plugin-tray-label"><i class="fa-solid fa-puzzle-piece"></i> Aktif Eklentiler:</span>
+    </div>
+
+    <!-- 🧩 EKLENTİLER MODALI (PLUGIN MARKETPLACE) -->
+    <div class="plugin-modal-overlay" id="pluginModalOverlay" role="dialog" aria-modal="true" aria-label="Bitigey Türkiyat Eklentileri">
+        <div class="plugin-modal-box">
+            <div class="plugin-modal-header">
+                <h3><i class="fa-solid fa-puzzle-piece"></i> Bitigey Türkiyat — Eklenti Mağazası</h3>
+                <button class="plugin-modal-close" id="pluginModalClose" title="Kapat">×</button>
+            </div>
+            <div class="plugin-modal-body" id="pluginModalBody">
+
+                <!-- BİTİGEY RESMİ EKLENTİLERİ -->
+                <div class="plugin-section-title"><i class="fa-solid fa-star" style="color:var(--accent-gold);margin-right:0.4rem;"></i>Bitigey Resmî Eklentileri</div>
+                <div class="plugin-grid">
+
+                    <!-- 1. KÖG RADYO -->
+                    <div class="plugin-card" id="pcKogRadio">
+                        <div class="plugin-icon-row">
+                            <div class="plugin-icon"><i class="fa-solid fa-radio"></i></div>
+                            <span class="plugin-status-badge off" id="badgeKogRadio">Kapalı</span>
+                        </div>
+                        <p class="plugin-name">KÖG Radyo</p>
+                        <p class="plugin-desc">Orta Asya ve Türkiyat akademik yayın istasyonu. Çalışma ortamınıza eşlik eden kültürel radyo.</p>
+                        <button class="plugin-toggle-btn" data-plugin="kogradio" id="toggleKogRadio">Etkinleştir</button>
+                        <div class="kog-radio-mini" id="kogRadioWidget" style="display:none;">
+                            <div class="kog-radio-info">
+                                <div class="kog-track-name" id="kogTrackName">📻 KÖG Radyo</div>
+                                <div class="kog-track-sub" id="kogTrackSub">Bitigey Akademik Yayın İstasyonu</div>
+                            </div>
+                            <div class="kog-radio-controls">
+                                <button class="kog-radio-btn" id="kogPlayBtn" title="Oynat/Durdur"><i class="fa-solid fa-play" id="kogPlayIcon"></i></button>
+                                <button class="kog-radio-btn" id="kogVolBtn" title="Ses"><i class="fa-solid fa-volume-high"></i></button>
+                            </div>
+                            <audio id="kogAudioEl" crossorigin="anonymous"></audio>
+                        </div>
+                    </div>
+
+                    <!-- 2. FİLOLOJİ MÜSVETTESİ -->
+                    <div class="plugin-card" id="pcMusvette">
+                        <div class="plugin-icon-row">
+                            <div class="plugin-icon"><i class="fa-solid fa-note-sticky"></i></div>
+                            <span class="plugin-status-badge off" id="badgeMusvette">Kapalı</span>
+                        </div>
+                        <p class="plugin-name">Filoloji Müsvedde Defteri</p>
+                        <p class="plugin-desc">Otomatik kaydeden akademik not defteri. LocalStorage ile kaybolmayan notlar, tek tuşla TXT indir.</p>
+                        <button class="plugin-toggle-btn" data-plugin="musvette" id="toggleMusvette">Etkinleştir</button>
+                        <div class="musvette-panel" id="musvetteWidget" style="display:none;">
+                            <textarea id="musvetteText" placeholder="Araştırma notlarınızı buraya yazın... (Otomatik kaydedilir)"></textarea>
+                            <div class="musvette-status" id="musvetteStatus">—</div>
+                            <div style="display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap;">
+                                <button class="ek-btn ek-btn-secondary" id="btnMusvetteCopy" style="font-size:0.78rem;padding:0.35rem 0.8rem;"><i class="fa-solid fa-copy"></i> Kopyala</button>
+                                <button class="ek-btn ek-btn-secondary" id="btnMusvetteDownload" style="font-size:0.78rem;padding:0.35rem 0.8rem;"><i class="fa-solid fa-download"></i> TXT İndir</button>
+                                <button class="ek-btn" id="btnMusvetteClear" style="font-size:0.78rem;padding:0.35rem 0.8rem; color:var(--accent-crimson);"><i class="fa-solid fa-trash"></i> Temizle</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. TRANSKRİPSİYON KLAVYE TEPSİSİ -->
+                    <div class="plugin-card" id="pcTransKeys">
+                        <div class="plugin-icon-row">
+                            <div class="plugin-icon"><i class="fa-solid fa-keyboard"></i></div>
+                            <span class="plugin-status-badge off" id="badgeTransKeys">Kapalı</span>
+                        </div>
+                        <p class="plugin-name">Çeviriyazı Hızlı Klavye Tepsisi</p>
+                        <p class="plugin-desc">İstasyon genelinde aktif. Herhangi bir metin kutusuna tıkla; ḳ, ẓ, ʿ, ʾ gibi özel harfleri tek tıkla ekle.</p>
+                        <button class="plugin-toggle-btn" data-plugin="transkeys" id="toggleTransKeys">Etkinleştir</button>
+                    </div>
+
+                </div>
+
+                <!-- AKADEMİK REFERANS EKLENTİLERİ -->
+                <div class="plugin-section-title"><i class="fa-solid fa-book-open" style="color:var(--accent-azure);margin-right:0.4rem;"></i>Akademik Referans Eklentileri</div>
+                <div class="plugin-grid">
+
+                    <!-- 4. TDV İSLÂM ANSİKLOPEDİSİ -->
+                    <div class="plugin-card" id="pcTdvia">
+                        <div class="plugin-icon-row">
+                            <div class="plugin-icon" style="background:rgba(56,189,248,0.1);border-color:rgba(56,189,248,0.3);color:var(--accent-azure);"><i class="fa-solid fa-mosque"></i></div>
+                            <span class="plugin-status-badge off" id="badgeTdvia">Kapalı</span>
+                        </div>
+                        <p class="plugin-name">TDV İslâm Ansiklopedisi</p>
+                        <p class="plugin-desc">44 ciltlik İA'da anlık madde arama, Cilt-Sayfa künyesi ve hazır dipnot üreteci. Osmanlı-Türk araştırmaları için altın kaynak.</p>
+                        <button class="plugin-toggle-btn" data-plugin="tdvia" id="toggleTdvia">Etkinleştir</button>
+                        <div class="tdvia-panel" id="tdviaWidget" style="display:none;">
+                            <div class="tdvia-search-row">
+                                <input type="text" id="tdviaSearchInput" placeholder="Madde adı arayın: Fuzûlî, Osmanlı, Divan…" autocomplete="off">
+                                <button class="ek-btn ek-btn-primary" id="btnTdviaSearch" style="font-size:0.82rem;padding:0.45rem 0.9rem;white-space:nowrap;"><i class="fa-solid fa-search"></i> Ara</button>
+                            </div>
+                            <div class="tdvia-results" id="tdviaResults"></div>
+                            <div id="tdviaCitationBox" style="display:none;margin-top:0.75rem;background:var(--bg-hover);border:1px solid var(--border-station);border-radius:var(--radius-sm);padding:0.75rem;">
+                                <div style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.35rem;">Hazır Dipnot (İSNAD 2):</div>
+                                <div id="tdviaCitationText" style="font-size:0.85rem;color:var(--text-primary);line-height:1.6;font-family:var(--font-serif);"></div>
+                                <button class="ek-btn ek-btn-secondary" id="btnCopyTdviaCitation" style="margin-top:0.5rem;font-size:0.78rem;"><i class="fa-solid fa-copy"></i> Dipnotu Kopyala</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. NOKTALAMA İŞARETLERİ DÜZENLEYİCİ -->
+                    <div class="plugin-card" id="pcNoktalama">
+                        <div class="plugin-icon-row">
+                            <div class="plugin-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.3);color:var(--accent-emerald);"><i class="fa-solid fa-spell-check"></i></div>
+                            <span class="plugin-status-badge off" id="badgeNoktalama">Kapalı</span>
+                        </div>
+                        <p class="plugin-name">Akademik Noktalama &amp; Tipografi Düzenleyici</p>
+                        <p class="plugin-desc">Transkripsiyon metinleri için: tırnak → «», çizgi → em-dash, çift boşluk temizle, ʿ/ʾ düzelt. Tek tuşla.</p>
+                        <button class="plugin-toggle-btn" data-plugin="noktalama" id="toggleNoktalama">Etkinleştir</button>
+                        <div class="noktalama-panel" id="noktalamaWidget" style="display:none;">
+                            <textarea id="noktalamaInput" placeholder="Düzenlenecek metni buraya yapıştırın…"></textarea>
+                            <div class="noktalama-rules">
+                                <span class="rule-chip">« » Fransız Tırnağı</span>
+                                <span class="rule-chip">— Em Dash</span>
+                                <span class="rule-chip">Çift Boşluk Temizle</span>
+                                <span class="rule-chip">ʿAyn / ʾHemze Düzelt</span>
+                                <span class="rule-chip">... → …</span>
+                                <span class="rule-chip">Satır Sonu Normalize</span>
+                            </div>
+                            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                                <button class="ek-btn ek-btn-primary" id="btnRunNoktalama" style="font-size:0.82rem;"><i class="fa-solid fa-wand-magic-sparkles"></i> Tipografiyi Temizle &amp; Düzenle</button>
+                                <button class="ek-btn ek-btn-secondary" id="btnCopyNoktalama" style="font-size:0.82rem;"><i class="fa-solid fa-copy"></i> Sonucu Kopyala</button>
+                            </div>
+                            <textarea id="noktalamaOutput" placeholder="Temizlenmiş metin burada görünecek…" readonly style="margin-top:0.75rem;background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.2);"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- 6. KAFİYE & REDİF ANALİZ MOTORU -->
+                    <div class="plugin-card" id="pcKafiye">
+                        <div class="plugin-icon-row">
+                            <div class="plugin-icon" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.3);color:#a855f7;"><i class="fa-solid fa-music"></i></div>
+                            <span class="plugin-status-badge off" id="badgeKafiye">Kapalı</span>
+                        </div>
+                        <p class="plugin-name">Kafiye &amp; Redif Analiz Motoru</p>
+                        <p class="plugin-desc">Revî harfi tespiti, kafiye türü (mücerred/mürdef/mukayyed) ve redif belirleme. Divan şiiri analiz matrisi.</p>
+                        <button class="plugin-toggle-btn" data-plugin="kafiye" id="toggleKafiye">Etkinleştir</button>
+                        <div id="kafiyeWidget" style="display:none;margin-top:1rem;">
+                            <textarea id="kafiyeInput" class="ek-input" style="width:100%;min-height:100px;background:var(--bg-hover);border:1px solid var(--border-station);color:var(--text-primary);padding:0.65rem;border-radius:var(--radius-sm);font-family:var(--font-serif);font-size:0.9rem;resize:vertical;outline:none;box-sizing:border-box;" placeholder="Gazel/kaside mısralarını buraya yazın (her satır = bir mısra)…"></textarea>
+                            <button class="ek-btn ek-btn-primary" id="btnRunKafiye" style="margin-top:0.5rem;font-size:0.82rem;"><i class="fa-solid fa-magnifying-glass"></i> Kafiye &amp; Redif Analizi Yap</button>
+                            <div id="kafiyeResult" style="margin-top:0.75rem;"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div><!-- /plugin-modal-body -->
+        </div>
+    </div>
+
+    <!-- 📐 4. ANA ÇALIŞMA VİTRİNİ (MODÜLLER ALANI) -->
+    <main class="turkiyat-main-viewport">
+
+        <!-- ================================================================= -->
+        <!-- MODÜL 1: EDİSYON KRİTİK & VARYANT TEZGAHI                         -->
+        <!-- ================================================================= -->
+        <section id="modEdisyon" class="turkiyat-module active">
+            
+            <!-- METAVERİ BARI -->
+            <div class="ek-meta-bar" style="border-radius: var(--radius-sm); margin-bottom: 1rem;">
+                <div class="ek-meta-inner">
+                    <div class="ek-meta-group">
+                        <label for="ekPresetSelect" class="ek-meta-label"><i class="fa-solid fa-bookmark"></i> Klasik Metin:</label>
+                        <select id="ekPresetSelect" class="ek-select" style="min-width: 200px;">
+                            <option value="fuzuli_su">Fuzûlî — Su Kasidesi (Klasik Örnek)</option>
+                            <option value="baki_gazel">Bâkî — Âvâzeyi Bu Âleme Gazeli</option>
+                            <option value="dede_korkut">Dede Korkut — Salur Kazan Destanı</option>
+                        </select>
+
+                        <label for="projTitle" class="ek-meta-label"><i class="fa-solid fa-pen-nib"></i> Eser:</label>
+                        <input type="text" id="projTitle" class="ek-input" placeholder="Örn: Su Kasîdesi" style="width: 170px;">
+
+                        <label for="projAuthor" class="ek-meta-label"><i class="fa-solid fa-user-graduate"></i> Şair:</label>
+                        <input type="text" id="projAuthor" class="ek-input" placeholder="Örn: Fuzûlî" style="width: 130px;">
+                        <a href="turkiyat-edisyon-kritik.html" target="_blank" class="sozluk-cat-btn" style="margin-left:0.5rem; text-decoration:none;" title="Ayrı Sayfada Aç (SEO)"><i class="fa-solid fa-arrow-up-right-from-square"></i> Müstakil Sayfa</a>
+                    </div>
+
+                    <div class="ek-meta-group">
+                        <div class="ek-font-controls">
+                            <button id="btnFontZoomOut" class="ek-font-btn" title="Yazıyı Küçült (A-)">A-</button>
+                            <button id="btnFontZoomIn" class="ek-font-btn" title="Yazıyı Büyüt (A+)">A+</button>
+                        </div>
+                        <select id="selectFontFamily" class="ek-select" style="font-size:0.8rem; width:150px;">
+                            <option value="'EB Garamond', serif" selected>EB Garamond</option>
+                            <option value="'Amiri', serif">Amiri (Şarkiyat)</option>
+                            <option value="'Playfair Display', serif">Playfair Display</option>
+                            <option value="'Times New Roman', serif">Times New Roman</option>
+                        </select>
+
+                        <button id="btnRunCollation" class="ek-btn ek-btn-primary">
+                            <i class="fa-solid fa-sliders"></i> Karşılaştır &amp; Aparatı Çıkar
+                        </button>
+                        <button id="btnExportModal" class="ek-btn ek-btn-secondary">
+                            <i class="fa-solid fa-file-export"></i> 7 Format Dışa Aktar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRANSKRİPSİYON KLAVYE ŞERİDİ -->
+            <div class="ek-transcription-bar" style="border-radius: var(--radius-sm); margin-bottom: 1.25rem;">
+                <div class="ek-transcription-inner">
+                    <span class="ek-transcription-title"><i class="fa-solid fa-keyboard"></i> Çeviriyazı Klavyesi:</span>
+                    <div class="ek-transcription-keys">
+                        <button class="ek-char-btn" data-char="ḫ" title="ḫ (Hı / خ)">ḫ</button>
+                        <button class="ek-char-btn" data-char="Ḫ" title="Ḫ (Büyük Hı)">Ḫ</button>
+                        <button class="ek-char-btn" data-char="ġ" title="ġ (Gayın / غ)">ġ</button>
+                        <button class="ek-char-btn" data-char="Ġ" title="Ġ (Büyük Gayın)">Ġ</button>
+                        <button class="ek-char-btn" data-char="ṣ" title="ṣ (Sad / ص)">ṣ</button>
+                        <button class="ek-char-btn" data-char="Ṣ" title="Ṣ (Büyük Sad)">Ṣ</button>
+                        <button class="ek-char-btn" data-char="ż" title="ż (Dad / ض)">ż</button>
+                        <button class="ek-char-btn" data-char="Ż" title="Ż (Büyük Dad)">Ż</button>
+                        <button class="ek-char-btn" data-char="ṭ" title="ṭ (Tı / ط)">ṭ</button>
+                        <button class="ek-char-btn" data-char="Ṭ" title="Ṭ (Büyük Tı)">Ṭ</button>
+                        <button class="ek-char-btn" data-char="ẓ" title="ẓ (Zı / ظ)">ẓ</button>
+                        <button class="ek-char-btn" data-char="Ẓ" title="Ẓ (Büyük Zı)">Ẓ</button>
+                        <button class="ek-char-btn" data-char="ḳ" title="ḳ (Kaf / ق)">ḳ</button>
+                        <button class="ek-char-btn" data-char="Ḳ" title="Ḳ (Büyük Kaf)">Ḳ</button>
+                        <button class="ek-char-btn" data-char="ḥ" title="ḥ (Ha / ح)">ḥ</button>
+                        <button class="ek-char-btn" data-char="Ḥ" title="Ḥ (Büyük Ha)">Ḥ</button>
+                        <button class="ek-char-btn" data-char="s̱" title="s̱ (Peltek Se)">s̱</button>
+                        <button class="ek-char-btn" data-char="ẕ" title="ẕ (Zal)">ẕ</button>
+                        <button class="ek-char-btn" data-char="ñ" title="ñ (Sağır Kef)">ñ</button>
+                        <button class="ek-char-btn" data-char="ʿ" title="ʿ (Ayn)">ʿ</button>
+                        <button class="ek-char-btn" data-char="ʾ" title="ʾ (Hemze)">ʾ</button>
+                        <button class="ek-char-btn" data-char="ā" title="ā (Uzun a)">ā</button>
+                        <button class="ek-char-btn" data-char="ī" title="ī (Uzun i)">ī</button>
+                        <button class="ek-char-btn" data-char="ū" title="ū (Uzun u)">ū</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NÜSHA PANELLERİ -->
+            <div id="ekWitnessGrid" class="ek-witness-grid cols-3">
+                
+                <!-- Nüsha A -->
+                <div class="ek-witness-card is-base" id="cardWitnessA">
+                    <div class="ek-witness-card-header">
+                        <div class="ek-witness-siglum">
+                            <i class="fa-solid fa-crown" style="font-size:0.9rem; color:var(--accent-gold);"></i> Nüsha A <span class="ek-base-badge">Esas Nüsha</span>
+                        </div>
+                        <div class="ek-witness-meta-inputs">
+                            <input type="text" id="witnessAName" value="Süleymaniye Ktp. Fatih Nu. 3794">
+                        </div>
+                    </div>
+                    <div class="ek-card-tab-bar">
+                        <button class="ek-card-tab active" data-target="WitnessA" data-view="edit"><i class="fa-solid fa-pen"></i> Metin Girişi</button>
+                        <button class="ek-card-tab" data-target="WitnessA" data-view="diff"><i class="fa-solid fa-highlighter"></i> Lemma &amp; Dipnot</button>
+                    </div>
+                    <div class="ek-witness-editor-wrap">
+                        <textarea id="textWitnessA" class="ek-witness-textarea" placeholder="Nüsha A metni..."></textarea>
+                        <div id="diffWitnessA" class="ek-witness-diffview"></div>
+                    </div>
+                    <div class="ek-witness-card-footer">
+                        <span id="footerWitnessA">Mısra &amp; Kelime Sayımı</span>
+                        <span>Esas Nüsha</span>
+                    </div>
+                </div>
+
+                <!-- Nüsha B -->
+                <div class="ek-witness-card" id="cardWitnessB">
+                    <div class="ek-witness-card-header">
+                        <div class="ek-witness-siglum">Nüsha B</div>
+                        <div class="ek-witness-meta-inputs">
+                            <input type="text" id="witnessBName" value="Millet Ktp. Ali Emîrî Nu. 345">
+                        </div>
+                    </div>
+                    <div class="ek-card-tab-bar">
+                        <button class="ek-card-tab active" data-target="WitnessB" data-view="edit"><i class="fa-solid fa-pen"></i> Metin Girişi</button>
+                        <button class="ek-card-tab" data-target="WitnessB" data-view="diff"><i class="fa-solid fa-code-compare"></i> Renkli Varyant</button>
+                    </div>
+                    <div class="ek-witness-editor-wrap">
+                        <textarea id="textWitnessB" class="ek-witness-textarea" placeholder="Nüsha B metni..."></textarea>
+                        <div id="diffWitnessB" class="ek-witness-diffview"></div>
+                    </div>
+                    <div class="ek-witness-card-footer">
+                        <span>Mutabakat: <strong id="statAgreementB" style="color:var(--accent-gold);">%0</strong></span>
+                        <span>Karşılaştırma</span>
+                    </div>
+                </div>
+
+                <!-- Nüsha C -->
+                <div class="ek-witness-card" id="cardWitnessC">
+                    <div class="ek-witness-card-header">
+                        <div class="ek-witness-siglum">Nüsha C</div>
+                        <div class="ek-witness-meta-inputs">
+                            <input type="text" id="witnessCName" value="İstanbul Üniv. Nadir Eserler Nu. 2872">
+                        </div>
+                    </div>
+                    <div class="ek-card-tab-bar">
+                        <button class="ek-card-tab active" data-target="WitnessC" data-view="edit"><i class="fa-solid fa-pen"></i> Metin Girişi</button>
+                        <button class="ek-card-tab" data-target="WitnessC" data-view="diff"><i class="fa-solid fa-code-compare"></i> Renkli Varyant</button>
+                    </div>
+                    <div class="ek-witness-editor-wrap">
+                        <textarea id="textWitnessC" class="ek-witness-textarea" placeholder="Nüsha C metni..."></textarea>
+                        <div id="diffWitnessC" class="ek-witness-diffview"></div>
+                    </div>
+                    <div class="ek-witness-card-footer">
+                        <span>Mutabakat: <strong id="statAgreementC" style="color:var(--accent-gold);">%0</strong></span>
+                        <span>Karşılaştırma</span>
+                    </div>
+                </div>
+
+                <!-- Nüsha D (İsteğe Bağlı) -->
+                <div class="ek-witness-card" id="cardWitnessD" style="display:none;">
+                    <div class="ek-witness-card-header">
+                        <div class="ek-witness-siglum">Nüsha D</div>
+                        <div class="ek-witness-meta-inputs">
+                            <input type="text" id="witnessDName" value="Viyana Millî Ktp. Mxt. 412">
+                        </div>
+                    </div>
+                    <div class="ek-card-tab-bar">
+                        <button class="ek-card-tab active" data-target="WitnessD" data-view="edit"><i class="fa-solid fa-pen"></i> Metin Girişi</button>
+                        <button class="ek-card-tab" data-target="WitnessD" data-view="diff"><i class="fa-solid fa-code-compare"></i> Renkli Varyant</button>
+                    </div>
+                    <div class="ek-witness-editor-wrap">
+                        <textarea id="textWitnessD" class="ek-witness-textarea" placeholder="Nüsha D metni..."></textarea>
+                        <div id="diffWitnessD" class="ek-witness-diffview"></div>
+                    </div>
+                    <div class="ek-witness-card-footer">
+                        <span>Ek Nüsha</span>
+                        <span>Nüsha D</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- APPARATUS CRITICUS DECK -->
+            <section class="ek-apparatus-section" style="margin-top: 1.5rem;">
+                <div class="ek-apparatus-header">
+                    <div class="ek-apparatus-title">
+                        <i class="fa-solid fa-scroll"></i> Eleştirel Aparat (Apparatus Criticus)
+                        <span id="ekApparatusCountBadge" class="badge-academic" style="font-size:0.75rem; padding:0.2rem 0.6rem;">0 Madde</span>
+                    </div>
+                    <div class="ek-apparatus-controls">
+                        <button id="btnCopyApparatus" class="ek-btn"><i class="fa-regular fa-copy"></i> Aparatı Kopyala</button>
+                        <button class="ek-btn ek-btn-primary" onclick="document.getElementById('btnDownloadWord').click();"><i class="fa-solid fa-file-word"></i> Word (.doc) İndir</button>
+                    </div>
+                </div>
+                <div id="ekApparatusList" class="ek-apparatus-list"></div>
+            </section>
+
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL 2: ARUZ VEZNİ & ŞİİR ÖLÇER                                  -->
+        <!-- ================================================================= -->
+        <section id="modAruz" class="turkiyat-module">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem; flex-wrap:wrap; gap:0.5rem;">
+                <div>
+                    <h2 style="font-family:var(--font-serif); margin:0 0 0.4rem 0;">Aruz Vezni &amp; Şiir Ölçer</h2>
+                    <p style="color:var(--text-secondary); margin:0; font-size:0.9rem;">
+                        Beytinizin hecelerini açık (.) ve kapalı (-) olarak çözümler; 32 klasik divan kalıbı arasından en yüksek mutabakatı bulur, imâle ve zihâf kusurlarını listeler.
+                    </p>
+                </div>
+                <a href="turkiyat-aruz-vezni.html" target="_blank" class="sozluk-cat-btn" style="text-decoration:none;" title="Ayrı Sayfada Aç (SEO)"><i class="fa-solid fa-arrow-up-right-from-square"></i> Müstakil Sayfa</a>
+            </div>
+
+            <div class="aruz-suite-grid">
+                <div class="aruz-input-card">
+                    <div class="aruz-input-group">
+                        <label for="aruzMisra1"><i class="fa-solid fa-feather"></i> 1. Mısra:</label>
+                        <input type="text" id="aruzMisra1" class="aruz-input-field" placeholder="Örn: Âb-gûndur günbed-i devvâr rengi bilmezem">
+                    </div>
+                    <div class="aruz-input-group">
+                        <label for="aruzMisra2"><i class="fa-solid fa-feather"></i> 2. Mısra:</label>
+                        <input type="text" id="aruzMisra2" class="aruz-input-field" placeholder="Örn: Yâ muhît olmuş gözümden günbed-i devvâra su">
+                    </div>
+                    <div style="display:flex; gap:0.65rem; margin-top:1.25rem;">
+                        <button id="btnAnalyzeAruz" class="ek-btn ek-btn-primary" style="padding:0.7rem 1.4rem;">
+                            <i class="fa-solid fa-scale-balanced"></i> Vezni Çözümle &amp; Tahlil Et
+                        </button>
+                        <button id="btnAruzSample" class="ek-btn">
+                            <i class="fa-solid fa-flask"></i> Örnek Beyit Yükle (Fuzûlî)
+                        </button>
+                    </div>
+                </div>
+
+                <div id="aruzResultArea">
+                    <div style="background:var(--bg-card); border:1px solid var(--border-station); border-radius:var(--radius-md); padding:2rem; text-align:center; color:var(--text-secondary);">
+                        <i class="fa-solid fa-scale-balanced" style="font-size:2rem; color:var(--accent-gold); margin-bottom:0.75rem;"></i>
+                        <p style="margin:0;">Sol tarafa mısralarınızı girip <strong>"Vezni Çözümle"</strong> butonuna basınız.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL 3: ÇEVİRİYAZI (TRANSKRİPSİYON) DÖNÜŞTÜRÜCÜ                   -->
+        <!-- ================================================================= -->
+        <section id="modTranskripsiyon" class="turkiyat-module">
+            <div style="margin-bottom: 1.25rem;">
+                <h2 style="font-family:var(--font-serif); margin:0 0 0.4rem 0;">Çeviriyazı &amp; Transkripsiyon Dönüştürücü</h2>
+                <p style="color:var(--text-secondary); margin:0; font-size:0.9rem;">
+                    Standart Latin harfli metinleri TDV İslâm Ansiklopedisi ve TÜBA filoloji standartlarında çeviriyazı harflerine (ḫ, ġ, ṣ, ż, ṭ, ẓ, ḳ, ḥ vb.) dönüştürür.
+                </p>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+                <div style="background:var(--bg-card); border:1px solid var(--border-station); border-radius:var(--radius-md); padding:1.25rem;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:0.6rem;">
+                        <strong>Giriş Metni (Standart Alfabe):</strong>
+                        <button id="btnRunTranscription" class="ek-btn ek-btn-primary" style="padding:0.35rem 0.75rem; font-size:0.78rem;">
+                            <i class="fa-solid fa-arrow-right"></i> Dönüştür
+                        </button>
+                    </div>
+                    <textarea id="textTransInput" class="ek-witness-textarea" style="height:320px; border:1px solid var(--border-station); border-radius:var(--radius-sm);" placeholder="Örn: Sultanü'ş-şuara Baki divanından gazel..."></textarea>
+                </div>
+
+                <div style="background:var(--bg-card); border:1px solid var(--border-station); border-radius:var(--radius-md); padding:1.25rem;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:0.6rem;">
+                        <strong>Akademik Çeviriyazı Çıktısı (TDV İA Uyumlu):</strong>
+                        <button id="btnCopyTrans" class="ek-btn" style="padding:0.35rem 0.75rem; font-size:0.78rem;">
+                            <i class="fa-regular fa-copy"></i> Kopyala
+                        </button>
+                    </div>
+                    <textarea id="textTransOutput" class="ek-witness-textarea" style="height:320px; border:1px solid var(--border-station); border-radius:var(--radius-sm); color:var(--accent-gold);" readonly placeholder="Dönüştürülen çeviriyazı metni burada belirecektir..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL 4: KÂMUS-I TÜRKİYAT (LUGAT MATRİSİ)                         -->
+        <!-- ================================================================= -->
+        <section id="modKamus" class="turkiyat-module">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.25rem;">
+                <div>
+                    <h2 style="font-family:var(--font-serif); margin:0 0 0.3rem 0; display:flex; align-items:center; gap:0.5rem;">
+                        <i class="fa-solid fa-book-bookmark" style="color:var(--accent-gold);"></i>
+                        Edebiyat &amp; Filoloji Sözlüğü (Canlı RSS Destekli)
+                    </h2>
+                    <p style="color:var(--text-secondary); margin:0; font-size:0.9rem;">
+                        150+ klasik edebi mazmun, yazma eser ıstılahı ve sözlük sitelerinden (TDK, Kubbealtı, Bitigey) canlı RSS akışları.
+                    </p>
+                </div>
+                <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+                    <a href="turkiyat-sozluk.html" target="_blank" class="sozluk-cat-btn" style="text-decoration:none;" title="Ayrı Sayfada Aç (SEO)"><i class="fa-solid fa-arrow-up-right-from-square"></i> Müstakil Sayfa</a>
+                    <button id="btnFetchSozlukRss" class="ek-btn" style="color:var(--accent-gold); border-color:var(--accent-gold);" title="Sözlük sitelerinden canlı kelime beslemelerini çek">
+                        <i class="fa-solid fa-rss"></i> <span class="btn-text">Canlı RSS Beslemelerini Çek</span>
+                    </button>
+                    <div style="min-width: 250px;">
+                        <input type="text" id="sozlukSearchInput" class="ek-input" placeholder="Kelime, anlam veya köken ara (Örn: gül-fem, zahriye)..." style="width: 100%; padding:0.6rem 1rem;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kategori Filtre Butonları -->
+            <div class="sozluk-filter-bar">
+                <button class="sozluk-cat-btn active" data-cat="all">
+                    <i class="fa-solid fa-layer-group"></i> Tümü
+                </button>
+                <button class="sozluk-cat-btn" data-cat="mazmun">
+                    <i class="fa-solid fa-feather"></i> Edebi Mazmunlar
+                </button>
+                <button class="sozluk-cat-btn" data-cat="yazma">
+                    <i class="fa-solid fa-scroll"></i> Yazma Eser Terimleri
+                </button>
+                <button class="sozluk-cat-btn" data-cat="tasavvuf">
+                    <i class="fa-solid fa-heart"></i> Tasavvuf &amp; Felsefe
+                </button>
+                <button class="sozluk-cat-btn" data-cat="edebi-sanat">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Edebi Sanatlar
+                </button>
+                <button class="sozluk-cat-btn" data-cat="rss-canli">
+                    <i class="fa-solid fa-rss" style="color:var(--accent-gold);"></i> Canlı RSS Kelimeleri
+                </button>
+            </div>
+
+            <!-- Sözlük Kartları Izgarası -->
+            <div id="sozlukResultsList" class="sozluk-card-grid"></div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL 5: AKADEMİK KAYNAKÇA & DİPNOT ÜRETECİ                        -->
+        <!-- ================================================================= -->
+        <section id="modKaynakca" class="turkiyat-module">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem; flex-wrap:wrap; gap:0.5rem;">
+                <div>
+                    <h2 style="font-family:var(--font-serif); margin:0 0 0.4rem 0;">Akademik Kaynakça &amp; Dipnot Üreteci</h2>
+                    <p style="color:var(--text-secondary); margin:0; font-size:0.9rem;">
+                        Yüksek lisans ve doktora tezleri için TDV İA, TÜBA ve APA 7 formatlarında anında hazır dipnot ve bibliyografya üretimi.
+                    </p>
+                </div>
+                <a href="turkiyat-kaynakca.html" target="_blank" class="sozluk-cat-btn" style="text-decoration:none;" title="Ayrı Sayfada Aç (SEO)"><i class="fa-solid fa-arrow-up-right-from-square"></i> Müstakil Sayfa</a>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+                <div style="background:var(--bg-card); border:1px solid var(--border-station); border-radius:var(--radius-md); padding:1.5rem;">
+                    <h4 style="margin:0 0 1rem 0; font-family:var(--font-serif); color:var(--accent-gold);">Eser Künyesi Girişi</h4>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:0.75rem;">
+                        <div>
+                            <label style="font-size:0.8rem; color:var(--text-secondary);">Yazar / Şair Adı:</label>
+                            <input type="text" id="citeAuthor" class="ek-input" value="Fuzûlî" style="width:100%;">
+                        </div>
+                        <div>
+                            <label style="font-size:0.8rem; color:var(--text-secondary);">Eser Başlığı:</label>
+                            <input type="text" id="citeTitle" class="ek-input" value="Dîvân (Tenkitli Neşir)" style="width:100%;">
+                        </div>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.75rem; margin-bottom:1rem;">
+                        <div>
+                            <label style="font-size:0.8rem; color:var(--text-secondary);">Basım Yeri:</label>
+                            <input type="text" id="citeCity" class="ek-input" value="Ankara" style="width:100%;">
+                        </div>
+                        <div>
+                            <label style="font-size:0.8rem; color:var(--text-secondary);">Yayınevi / Kurum:</label>
+                            <input type="text" id="citePub" class="ek-input" value="Türk Dil Kurumu Yayınları" style="width:100%;">
+                        </div>
+                        <div>
+                            <label style="font-size:0.8rem; color:var(--text-secondary);">Yıl &amp; Sayfa:</label>
+                            <input type="text" id="citeYear" class="ek-input" value="2026" style="width:100%;">
+                        </div>
+                    </div>
+                    <button id="btnGenerateCitation" class="ek-btn ek-btn-primary" style="width:100%; justify-content:center;">
+                        <i class="fa-solid fa-quote-right"></i> Akademik Künyeyi Üret
+                    </button>
+                </div>
+
+                <div style="background:var(--bg-card); border:1px solid var(--border-station); border-radius:var(--radius-md); padding:1.5rem;">
+                    <h4 style="margin:0 0 1rem 0; font-family:var(--font-serif); color:var(--accent-gold);">Hazır Akademik Dipnot Formatları</h4>
+                    <div id="citationOutputBox">
+                        <div class="cite-result-item">
+                            <strong>TDV İslâm Ansiklopedisi Standardı:</strong><br>
+                            <code>Fuzûlî, "Dîvân (Tenkitli Neşir)", Ankara: Türk Dil Kurumu Yayınları, 2026, s. 15.</code>
+                        </div>
+                        <div class="cite-result-item">
+                            <strong>TÜBA Bilimsel Neşir Standardı:</strong><br>
+                            <code>Fuzûlî (2026). *Dîvân (Tenkitli Neşir)*. Ankara: Türk Dil Kurumu Yayınları, s. 15.</code>
+                        </div>
+                        <div class="cite-result-item">
+                            <strong>APA 7 Formatı:</strong><br>
+                            <code>Fuzûlî (2026). *Dîvân (Tenkitli Neşir)*. Türk Dil Kurumu Yayınları.</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL 6: CANLI TÜRKİYAT & EDEBİYAT RSS BÜLTENİ                    -->
+        <!-- ================================================================= -->
+        <section id="modRss" class="turkiyat-module">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.25rem;">
+                <div>
+                    <h2 style="font-family:var(--font-serif); margin:0 0 0.3rem 0;">Canlı Türkiyat &amp; Edebiyat Neşir Bülteni</h2>
+                    <p style="color:var(--text-secondary); margin:0; font-size:0.9rem;">
+                        İSAM, Yazma Eserler Kurumu (YEK), Türk Dil Kurumu (TDK), TEİS ve Bitigey canlı RSS akışları.
+                    </p>
+                </div>
+                <div style="display:flex; gap:0.5rem; align-items:center;">
+                    <a href="turkiyat-rss-bulten.html" target="_blank" class="sozluk-cat-btn" style="text-decoration:none;" title="Ayrı Sayfada Aç (SEO)"><i class="fa-solid fa-arrow-up-right-from-square"></i> Müstakil Sayfa</a>
+                    <button class="ek-btn" onclick="window.TurkiyatApp.showToast('Akademik RSS beslemeleri güncellendi.');">
+                        <i class="fa-solid fa-rotate"></i> Beslemeleri Yenile
+                    </button>
+                </div>
+            </div>
+
+            <div id="turkiyatRssContainer" class="turkiyat-news-grid"></div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL 7: VİKİPEDİ & AKADEMİK ANSİKLOPEDİ ARAŞTIRMA TEZGAHI        -->
+        <!-- ================================================================= -->
+        <section id="modWiki" class="turkiyat-module">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem; flex-wrap:wrap; gap:0.5rem;">
+                <div>
+                    <h2 style="font-family:var(--font-serif); margin:0 0 0.3rem 0; display:flex; align-items:center; gap:0.5rem;">
+                        <i class="fa-solid fa-globe" style="color:var(--accent-azure);"></i>
+                        Vikipedi &amp; Akademik Ansiklopedi Araştırma Tezgahı
+                    </h2>
+                    <p style="color:var(--text-secondary); margin:0; font-size:0.9rem;">
+                        Sayfadan ayrılmadan doğrudan Türkçe Vikipedi, TDV İslâm Ansiklopedisi ve filolojik kaynaklarda anında arama yapın, özet ve akademik kaynakça künyesi üretin.
+                    </p>
+                </div>
+                <a href="turkiyat-wiki.html" target="_blank" class="sozluk-cat-btn" style="text-decoration:none;" title="Ayrı Sayfada Aç (SEO)"><i class="fa-solid fa-arrow-up-right-from-square"></i> Müstakil Sayfa</a>
+            </div>
+
+            <div class="wiki-search-box">
+                <input type="text" id="wikiSearchInput" class="wiki-search-input" placeholder="Şair, eser, terim, yazma nüsha veya tarihî kavram arayın (Örn: Fuzûlî, Bâkî, Su Kasidesi, Orhun Yazıtları, Dîvânu Lugâti't-Türk, Aruz)...">
+                <button id="btnWikiSearch" class="ek-btn ek-btn-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i> Araştır
+                </button>
+                <button id="btnWikiClear" class="ek-btn" title="Temizle">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Hızlı Arama Çipleri -->
+            <div class="wiki-chips-container">
+                <span style="font-size:0.8rem; color:var(--accent-gold); font-weight:700; align-self:center; margin-right:0.3rem;">
+                    <i class="fa-solid fa-bolt"></i> Hızlı Konular:
+                </span>
+                <button class="wiki-chip" data-query="Fuzûlî">Fuzûlî</button>
+                <button class="wiki-chip" data-query="Bâkî">Bâkî</button>
+                <button class="wiki-chip" data-query="Nedîm">Nedîm</button>
+                <button class="wiki-chip" data-query="Şeyh Gâlib">Şeyh Gâlib</button>
+                <button class="wiki-chip" data-query="Ali Şîr Nevâî">Ali Şîr Nevâî</button>
+                <button class="wiki-chip" data-query="Orhun Yazıtları">Orhun Yazıtları</button>
+                <button class="wiki-chip" data-query="Dîvânu Lugâti't-Türk">Dîvânu Lugâti't-Türk</button>
+                <button class="wiki-chip" data-query="Kutadgu Bilig">Kutadgu Bilig</button>
+                <button class="wiki-chip" data-query="Edisyon Kritik">Edisyon Kritik</button>
+                <button class="wiki-chip" data-query="Aruz Vezni">Aruz Vezni</button>
+            </div>
+
+            <!-- Sonuç Vitrini -->
+            <div id="wikiResultArea">
+                <div class="wiki-article-card" id="wikiInitialPrompt">
+                    <div style="text-align:center; padding: 2rem 1rem; color:var(--text-secondary);">
+                        <i class="fa-solid fa-book-open-reader" style="font-size:2.8rem; color:var(--accent-gold); margin-bottom:1rem; opacity:0.8;"></i>
+                        <h3 style="font-family:var(--font-serif); color:var(--text-primary); margin:0 0 0.5rem 0;">Filolojik &amp; Edebi Araştırma Hazır</h3>
+                        <p style="max-width:550px; margin:0 auto 1.25rem; font-size:0.92rem;">
+                            Yukarıdaki arama kutusuna incelediğiniz divan şairini, metni veya edebiyat terimini yazabilir ya da hızlı etiketlere tıklayarak doğrudan ansiklopedi özetini ve TDV İA çapraz bağlantılarını görüntüleyebilirsiniz.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL 8: ORTA ASYA TÜRK DİLLERİ KİRİL-LATİN ÇEVİRİ MOTORU         -->
+        <!-- ================================================================= -->
+        <section id="modKiril" class="turkiyat-module">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem; flex-wrap:wrap; gap:0.5rem;">
+                <div>
+                    <h2 style="font-family:var(--font-serif); margin:0 0 0.3rem 0; display:flex; align-items:center; gap:0.5rem;">
+                        <i class="fa-solid fa-language" style="color:var(--accent-gold);"></i>
+                        Orta Asya Türk Dilleri Kiril-Latin Çeviri Motoru
+                    </h2>
+                    <p style="color:var(--text-secondary); margin:0; font-size:0.9rem;">
+                        Kazakça, Kırgızca, Özbekçe, Sovyet dönemi Azerbaycan neşirleri ve Ortak Türk Alfabesi için çift yönlü, dilbilimsel ve harf sadakatine dayalı akademik transliterasyon.
+                    </p>
+                </div>
+                <a href="turkiyat-kiril-ceviri.html" target="_blank" class="sozluk-cat-btn" style="text-decoration:none;" title="Ayrı Sayfada Aç (SEO)"><i class="fa-solid fa-arrow-up-right-from-square"></i> Müstakil Sayfa</a>
+            </div>
+
+            <!-- Lehçe Seçimi -->
+            <div class="kiril-dialect-tabs">
+                <button class="kiril-dialect-btn active" data-dialect="kazakh">
+                    <span>🇰🇿</span> Kazak Türkçesi (Қазақша)
+                </button>
+                <button class="kiril-dialect-btn" data-dialect="kyrgyz">
+                    <span>🇰🇬</span> Kırgız Türkçesi (Кыргызча)
+                </button>
+                <button class="kiril-dialect-btn" data-dialect="uzbek">
+                    <span>🇺🇿</span> Özbek Türkçesi (Ўзбекча)
+                </button>
+                <button class="kiril-dialect-btn" data-dialect="azerbaijani">
+                    <span>🇦🇿</span> Azerbaycan (1939-1991 Sovyet Kiril)
+                </button>
+                <button class="kiril-dialect-btn" data-dialect="turkic">
+                    <span>🏛️</span> Genel Türkoloji Standart
+                </button>
+            </div>
+
+            <!-- Hazır Numune Metinler -->
+            <div class="kiril-sample-bar">
+                <span style="font-size:0.8rem; color:var(--accent-gold); font-weight:700;">
+                    <i class="fa-solid fa-file-lines"></i> Klasik Numune Yükle:
+                </span>
+                <button id="btnSampleAbay" class="ek-btn" style="padding:0.35rem 0.75rem; font-size:0.82rem;">
+                    Abay Kunanbayulı (Kazak)
+                </button>
+                <button id="btnSampleManas" class="ek-btn" style="padding:0.35rem 0.75rem; font-size:0.82rem;">
+                    Manas Destanı (Kırgız)
+                </button>
+                <button id="btnSampleNavoiy" class="ek-btn" style="padding:0.35rem 0.75rem; font-size:0.82rem;">
+                    Alisher Navoiy (Özbek)
+                </button>
+                <button id="btnSampleVahapzade" class="ek-btn" style="padding:0.35rem 0.75rem; font-size:0.82rem;">
+                    Bəxtiyar Vahabzadə (Azerbaycan)
+                </button>
+            </div>
+
+            <!-- Kiril Özel Harf Sanal Tepsisi -->
+            <div class="kiril-tray-container">
+                <span class="kiril-tray-label"><i class="fa-solid fa-keyboard"></i> KİRİL HARFLERİ:</span>
+                <button class="kiril-key-btn" data-char="Ә">Ә</button>
+                <button class="kiril-key-btn" data-char="ә">ә</button>
+                <button class="kiril-key-btn" data-char="Ғ">Ғ</button>
+                <button class="kiril-key-btn" data-char="ғ">ғ</button>
+                <button class="kiril-key-btn" data-char="Қ">Қ</button>
+                <button class="kiril-key-btn" data-char="қ">қ</button>
+                <button class="kiril-key-btn" data-char="Ң">Ң</button>
+                <button class="kiril-key-btn" data-char="ң">ң</button>
+                <button class="kiril-key-btn" data-char="Ө">Ө</button>
+                <button class="kiril-key-btn" data-char="ө">ө</button>
+                <button class="kiril-key-btn" data-char="Ұ">Ұ</button>
+                <button class="kiril-key-btn" data-char="ұ">ұ</button>
+                <button class="kiril-key-btn" data-char="Ү">Ү</button>
+                <button class="kiril-key-btn" data-char="ү">ү</button>
+                <button class="kiril-key-btn" data-char="Һ">Һ</button>
+                <button class="kiril-key-btn" data-char="һ">һ</button>
+                <button class="kiril-key-btn" data-char="І">І</button>
+                <button class="kiril-key-btn" data-char="і">і</button>
+                <button class="kiril-key-btn" data-char="Ў">Ў</button>
+                <button class="kiril-key-btn" data-char="ў">ў</button>
+                <button class="kiril-key-btn" data-char="Ҳ">Ҳ</button>
+                <button class="kiril-key-btn" data-char="ҳ">ҳ</button>
+                <button class="kiril-key-btn" data-char="Ҹ">Ҹ</button>
+                <button class="kiril-key-btn" data-char="ҹ">ҹ</button>
+                <button class="kiril-key-btn" data-char="Җ">Җ</button>
+                <button class="kiril-key-btn" data-char="җ">җ</button>
+            </div>
+
+            <!-- Çift Panelli Çeviri Alanı -->
+            <div class="kiril-workspace-grid">
+                <!-- Sol Panel (Kaynak) -->
+                <div class="kiril-panel">
+                    <div class="kiril-panel-header">
+                        <span class="kiril-panel-title" id="kirilInputLabel">
+                            <i class="fa-solid fa-pen-to-square"></i> Kaynak Metin (Kiril / Latin)
+                        </span>
+                        <div style="display:flex; gap:0.4rem;">
+                            <button id="btnKirilSwap" class="ek-btn" style="padding:0.3rem 0.65rem; font-size:0.8rem;" title="Yönü Değiştir (Kiril ⇄ Latin)">
+                                <i class="fa-solid fa-right-left"></i> <span id="kirilDirectionLabel">Kiril ➔ Latin</span>
+                            </button>
+                            <button id="btnKirilClear" class="ek-btn" style="padding:0.3rem 0.65rem; font-size:0.8rem;" title="Temizle">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="kirilInputText" class="kiril-textarea" placeholder="Çevirmek istediğiniz metni buraya yapıştırın veya yazın..."></textarea>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.75rem;">
+                        <span id="kirilCharCount" style="font-size:0.8rem; color:var(--text-secondary);">0 karakter</span>
+                        <button id="btnKirilConvert" class="ek-btn ek-btn-primary">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Çevir
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sağ Panel (Hedef Çıktı) -->
+                <div class="kiril-panel">
+                    <div class="kiril-panel-header">
+                        <span class="kiril-panel-title" id="kirilOutputLabel">
+                            <i class="fa-solid fa-check-double"></i> Çevrilmiş Metin (Latin)
+                        </span>
+                        <div style="display:flex; gap:0.4rem;">
+                            <button id="btnKirilCopy" class="ek-btn" style="padding:0.3rem 0.65rem; font-size:0.8rem;">
+                                <i class="fa-regular fa-copy"></i> Kopyala
+                            </button>
+                            <button id="btnKirilTransferWitness" class="ek-btn" style="padding:0.3rem 0.65rem; font-size:0.8rem; color:var(--accent-gold);" title="Metni Edisyon Kritik Nüsha C'ye aktar">
+                                <i class="fa-solid fa-scroll"></i> Nüsha'ya Aktar
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="kirilOutputText" class="kiril-textarea" readonly placeholder="Çevrilen metin burada görünecektir..."></textarea>
+                    <div style="margin-top:0.75rem; font-size:0.8rem; color:var(--text-secondary);">
+                        <i class="fa-solid fa-circle-check" style="color:var(--accent-emerald);"></i> Türkoloji ve Türk Dil Kurumu bilimsel çevriyazı standartlarına uygundur.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL 9: BİTİGEY AKADEMİK EKOSİSTEMİ & AĞ HARİTASI (SEO AĞI)     -->
+        <!-- ================================================================= -->
+        <section id="modEkosistem" class="turkiyat-module">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem; flex-wrap:wrap; gap:0.5rem;">
+                <div>
+                    <h2 style="font-family:var(--font-serif); margin:0 0 0.3rem 0; display:flex; align-items:center; gap:0.5rem;">
+                        <i class="fa-solid fa-sitemap" style="color:var(--accent-gold);"></i>
+                        Bitigey Akademik Ekosistemi &amp; Filoloji Ağı
+                    </h2>
+                    <p style="color:var(--text-secondary); margin:0; font-size:0.9rem;">
+                        Bitigey bünyesindeki hakemli dergiler, 7/24 edebi radyo, açık kütüphane, tarihi takvim ve akademik meydan portalları.
+                    </p>
+                </div>
+                <a href="turkiyat-ekosistem.html" target="_blank" class="sozluk-cat-btn" style="text-decoration:none;" title="Ayrı Sayfada Aç (SEO)"><i class="fa-solid fa-arrow-up-right-from-square"></i> Müstakil Sayfa</a>
+            </div>
+
+            <div class="ecosystem-grid">
+                <!-- 1. KÖG DERGİSİ -->
+                <a href="kog-dergisi.html" class="ecosystem-card">
+                    <div class="ecosystem-icon" style="background:rgba(212,175,55,0.15); color:var(--accent-gold);">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <h3>KÖG Dergisi</h3>
+                    <p>Türk Dili, Edebiyatı, tenkit ve edebi tahlil alanında yayın yapan süreli hakemli kültür dergisi. Sayı arşivi ve makale kabulü.</p>
+                    <div class="ecosystem-link-hint">
+                        <span>Dergiyi İncele</span> <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- 2. KÖG RADYO -->
+                <a href="kog-radyo.html" class="ecosystem-card">
+                    <div class="ecosystem-icon" style="background:rgba(245,158,11,0.15); color:#f59e0b;">
+                        <i class="fa-solid fa-tower-broadcast"></i>
+                    </div>
+                    <h3>KÖG Radyo (Canlı)</h3>
+                    <p>7/24 kesintisiz Klasik Türk Musikisi, TRT Nağme, TRT Türkü, şair sohbetleri, plak sesleri ve çalışma odası ambiyansı.</p>
+                    <div class="ecosystem-link-hint" style="color:#f59e0b;">
+                        <span>Radyoyu Dinle</span> <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- 3. TARİHTE BUGÜN EDEBİYAT -->
+                <a href="tarihte-bugun.html" class="ecosystem-card">
+                    <div class="ecosystem-icon" style="background:rgba(255,215,0,0.15); color:#ffd700;">
+                        <i class="fa-solid fa-calendar-day"></i>
+                    </div>
+                    <h3>Tarihte Bugün Edebiyat</h3>
+                    <p>365 günlük edebi zaman makinesi. Türk ve dünya şairlerinin doğum/ölüm günleri, mühim hadiseler ve günün beyti.</p>
+                    <div class="ecosystem-link-hint" style="color:#ffd700;">
+                        <span>Takvimi Aç</span> <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- 4. AÇIK KÜTÜPHANE -->
+                <a href="kitaplar.html" class="ecosystem-card">
+                    <div class="ecosystem-icon" style="background:rgba(124,58,237,0.15); color:#a29bfe;">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                    </div>
+                    <h3>Açık Kütüphane &amp; Kitaplar</h3>
+                    <p>Klasik divanlar, mesneviler, lügatler ve akademik metin neşirlerinin yer aldığı dijital açık erişim arşivi.</p>
+                    <div class="ecosystem-link-hint" style="color:#a29bfe;">
+                        <span>Kütüphaneye Git</span> <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- 5. TÜM ESERLER & ŞİİR KÜLLİYATI -->
+                <a href="eserler.html" class="ecosystem-card">
+                    <div class="ecosystem-icon" style="background:rgba(56,189,248,0.15); color:#38bdf8;">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3>Tüm Eserler &amp; Metin Arşivi</h3>
+                    <p>Fuzûlî, Bâkî, Nedîm, Şeyh Gâlib, Yûnus Emre ve çağdaş şairlerin eksiksiz gazel, kaside ve şiir dizini.</p>
+                    <div class="ecosystem-link-hint" style="color:#38bdf8;">
+                        <span>Metinleri Oku</span> <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- 6. BİTİGEY MEYDAN -->
+                <a href="forum.html" class="ecosystem-card">
+                    <div class="ecosystem-icon" style="background:rgba(16,185,129,0.15); color:#10b981;">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h3>Bitigey Meydan</h3>
+                    <p>Akademisyenler, yüksek lisans/doktora öğrencileri ve edebiyatseverler için bilimsel müzakere ve tartışma alanı.</p>
+                    <div class="ecosystem-link-hint" style="color:#10b981;">
+                        <span>Meydana Katıl</span> <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- 7. BİTİGEY HABER -->
+                <a href="haber.html" class="ecosystem-card">
+                    <div class="ecosystem-icon" style="background:rgba(231,76,60,0.15); color:#e74c3c;">
+                        <i class="fa-solid fa-newspaper"></i>
+                    </div>
+                    <h3>Bitigey Kültür &amp; Sanat Haber</h3>
+                    <p>Yazma eser neşirleri, sempozyumlar, Türkoloji kongreleri ve edebiyat dünyasından anlık güncel haber akışı.</p>
+                    <div class="ecosystem-link-hint" style="color:#e74c3c;">
+                        <span>Haberleri İncele</span> <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Kurumsal Bilgi & İletişim Kuşağı -->
+            <div style="background:var(--bg-card); border:1px solid var(--border-station); border-radius:var(--radius-md); padding:1.5rem; margin-top:2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.25rem;">
+                <div>
+                    <h4 style="margin:0 0 0.4rem 0; font-family:var(--font-serif); color:var(--text-gold);">Akademik İş Birliği &amp; İletişim</h4>
+                    <p style="margin:0; font-size:0.88rem; color:var(--text-secondary);">
+                        Üniversiteler, enstitüler ve araştırmacılar için ortak neşir ve dijital filoloji altyapısı: <strong style="color:var(--text-primary);">contact@bitigey.com</strong>
+                    </p>
+                </div>
+                <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                    <a href="kog-dergisi-gonullu-basvuru.html" class="ek-btn" style="text-decoration:none;"><i class="fa-solid fa-user-plus"></i> Hakem / Yazar Başvurusu</a>
+                    <a href="ucretsiz-reklam.html" class="ek-btn" style="text-decoration:none;"><i class="fa-solid fa-handshake"></i> İş Ortaklığı</a>
+                    <a href="mailto:contact@bitigey.com" class="ek-btn ek-btn-primary" style="text-decoration:none;"><i class="fa-regular fa-envelope"></i> Bize Yazın</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL: EBCED HESABI & TARİH DÜŞÜRME ÇÖZÜCÜ                        -->
+        <!-- ================================================================= -->
+        <section id="modEbced" class="turkiyat-module">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+                <div>
+                    <h2 style="font-family: var(--font-serif); font-size: 1.7rem; color: var(--text-gold); margin: 0 0 0.3rem 0;">
+                        <i class="fa-solid fa-calculator" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>
+                        Ebced Hesabı &amp; Tarih Düşürme Motoru
+                    </h2>
+                    <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary);">
+                        Divan şiiri mısralarını Ebced-i Kebîr kuralına göre harf harf analiz eder; Hicrî ve Milâdî seneyi hesaplar.
+                    </p>
+                </div>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <a href="turkiyat-ebced-hesabi.html" target="_blank" class="sozluk-cat-btn" title="Ayrı Sayfada Aç (SEO)">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Müstakil Sayfa
+                    </a>
+                </div>
+            </div>
+
+            <div class="ebced-dashboard">
+                <div>
+                    <label for="stationEbcedInput" style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.35rem;">
+                        Tarih Düşürülen Mısra veya İbare:
+                    </label>
+                    <textarea id="stationEbcedInput" class="ebced-input-box" placeholder="Mısrayı buraya yazınız veya yapıştırınız... Örn: Geçdi Fuzûlî veya Beldetün Tayyibetün"></textarea>
+                </div>
+
+                <div class="ebced-metrics-grid">
+                    <div class="ebced-metric-card">
+                        <div class="ebced-metric-value" id="stationEbcedTotal">0</div>
+                        <div class="ebced-metric-label">Ebced-i Kebîr Tutarı</div>
+                    </div>
+                    <div class="ebced-metric-card">
+                        <div class="ebced-metric-value" id="stationEbcedHijri">-</div>
+                        <div class="ebced-metric-label">Hicrî Sene (H.)</div>
+                    </div>
+                    <div class="ebced-metric-card">
+                        <div class="ebced-metric-value" id="stationEbcedMiladi">-</div>
+                        <div class="ebced-metric-label">Milâdî Karşılık (M.)</div>
+                    </div>
+                    <div class="ebced-metric-card">
+                        <div class="ebced-metric-value" id="stationEbcedWordCount">0</div>
+                        <div class="ebced-metric-label">Kelime Sayısı</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--text-gold); margin: 0;">Harf Harf Döküm Tablosu</h4>
+                        <button type="button" id="btnStationCopyEbced" class="sozluk-cat-btn" style="border-radius: var(--radius-sm);"><i class="fa-solid fa-copy"></i> Analiz Raporunu Kopyala</button>
+                    </div>
+                    <div style="overflow-x: auto; background: var(--bg-card); border-radius: var(--radius-md); border: 1px solid var(--border-station);">
+                        <table class="ebced-breakdown-table">
+                            <thead>
+                                <tr>
+                                    <th>Sıra</th>
+                                    <th>Kelime</th>
+                                    <th>Ayrıştırılan Harfler &amp; Ebced Değerleri</th>
+                                    <th>Tutar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyStationEbced">
+                                <tr><td colspan="4" style="text-align: center; color: var(--text-secondary); padding: 1rem;">Mısra girdiğinizde analiz dökümü burada belirecektir.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL: KODİKOLOJİ & YAZMA ESER TAVSİF FORMU                       -->
+        <!-- ================================================================= -->
+        <section id="modKodikoloji" class="turkiyat-module">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+                <div>
+                    <h2 style="font-family: var(--font-serif); font-size: 1.7rem; color: var(--text-gold); margin: 0 0 0.3rem 0;">
+                        <i class="fa-solid fa-scroll" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>
+                        Kodikoloji &amp; Yazma Eser Tavsif Formu
+                    </h2>
+                    <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary);">
+                        El yazması nüshaların fiziksel, paleografik ve paratekst niteliklerini katalog fişine dönüştürün.
+                    </p>
+                </div>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <a href="turkiyat-kodikoloji.html" target="_blank" class="sozluk-cat-btn" title="Ayrı Sayfada Aç (SEO)">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Müstakil Sayfa
+                    </a>
+                </div>
+            </div>
+
+            <form id="stationKodikolojiForm">
+                <div class="kodikoloji-grid">
+                    <div class="kodikoloji-group">
+                        <h3><i class="fa-solid fa-fingerprint"></i> Eser &amp; Kütüphane Bilgisi</h3>
+                        <div class="kodikoloji-field"><label>Eser Adı:</label><input type="text" id="stKodTitle" placeholder="Örn: Dîvân-ı Fuzûlî"></div>
+                        <div class="kodikoloji-field"><label>Müellif:</label><input type="text" id="stKodAuthor" placeholder="Örn: Fuzûlî (ö. 963/1556)"></div>
+                        <div class="kodikoloji-field"><label>Kütüphane &amp; No:</label><input type="text" id="stKodLibrary" placeholder="Örn: Süleymaniye Ktp., Hâlet Efendi, No: 684"></div>
+                    </div>
+                    <div class="kodikoloji-group">
+                        <h3><i class="fa-solid fa-ruler-combined"></i> Maddi Özellikler</h3>
+                        <div class="kodikoloji-field"><label>Varak &amp; Satır:</label><input type="text" id="stKodFolios" placeholder="Örn: 114 varak, 15 satır, 2 sütun"></div>
+                        <div class="kodikoloji-field"><label>Ebat &amp; Kağıt:</label><input type="text" id="stKodPaper" placeholder="Örn: 215x140 mm, Âharlı Doğu kağıdı"></div>
+                        <div class="kodikoloji-field"><label>Cilt:</label><input type="text" id="stKodBinding" placeholder="Örn: Meşin deri cilt, miklepli, şemseli"></div>
+                    </div>
+                    <div class="kodikoloji-group">
+                        <h3><i class="fa-solid fa-pen-nib"></i> Hat &amp; Tezyinat</h3>
+                        <div class="kodikoloji-field"><label>Hat Türü:</label><select id="stKodScript"><option value="Nesta'lîk">Nesta'lîk</option><option value="Ta'lîk">Ta'lîk</option><option value="Nesih">Nesih</option><option value="Rika'">Rika'</option></select></div>
+                        <div class="kodikoloji-field"><label>Ferağ (Ketebe):</label><input type="text" id="stKodColophon" placeholder="Örn: Ketebehu'l-fakîr Dervîş Mahmûd sene 998"></div>
+                        <div class="kodikoloji-field"><label>Mühür &amp; Vakıf:</label><input type="text" id="stKodProvenance" placeholder="Örn: Şeyhülislam Âşir Efendi mührü"></div>
+                    </div>
+                </div>
+                <div style="margin-top: 1rem; display: flex; justify-content: flex-end; gap: 0.5rem; flex-wrap: wrap;">
+                    <button type="button" id="btnStationDownloadWord" class="action-btn" style="background: #1d4ed8; color:#fff; border:none; padding:0.6rem 1.2rem; border-radius:var(--radius-sm); cursor:pointer;"><i class="fa-solid fa-file-word"></i> Word (.doc) İndir</button>
+                    <button type="button" id="btnStationCopyCitation" class="sozluk-cat-btn"><i class="fa-solid fa-quote-right"></i> Dipnot Kopyala</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- MODÜL: DİZİN & KONKORDANS                                         -->
+        <!-- ================================================================= -->
+        <section id="modDizin" class="turkiyat-module">
+            <div class="turkiyat-module-heading">
+                <div>
+                    <span class="module-kicker"><i class="fa-solid fa-list-ol"></i> DİJİTAL FİLOLOJİ</span>
+                    <h2>Dizin &amp; Konkordans</h2>
+                    <p>Bir metnin kelime sıklığını, bağlamını ve satır içi kullanımını saniyeler içinde görün.</p>
+                </div>
+                <div class="dizin-actions">
+                    <button id="btnDizinAnalyze" class="ek-btn ek-btn-primary"><i class="fa-solid fa-chart-column"></i> Analiz Et</button>
+                    <button id="btnDizinClear" class="ek-btn"><i class="fa-solid fa-eraser"></i> Temizle</button>
+                    <button id="btnDizinExport" class="ek-btn ek-btn-secondary"><i class="fa-solid fa-download"></i> CSV İndir</button>
+                </div>
+            </div>
+            <div class="dizin-grid">
+                <div class="dizin-input-panel">
+                    <label for="dizinInput"><i class="fa-solid fa-align-left"></i> Araştırma metni</label>
+                    <textarea id="dizinInput" placeholder="Dizinini çıkarmak istediğiniz metni buraya yapıştırın..."></textarea>
+                    <div class="dizin-settings">
+                        <label><input id="dizinIgnoreStopwords" type="checkbox" checked> Yaygın bağlaçları gizle</label>
+                        <label for="dizinMinLength">En az harf <input id="dizinMinLength" type="number" min="1" max="20" value="2"></label>
+                    </div>
+                    <p class="dizin-hint"><i class="fa-solid fa-circle-info"></i> Büyük/küçük harf ve noktalama farkları normalize edilir; özgün kullanım bağlamı korunur.</p>
+                </div>
+                <div class="dizin-summary" id="dizinSummary">
+                    <div class="dizin-empty"><i class="fa-solid fa-chart-simple"></i><strong>Analiz bekleniyor</strong><span>Metninizi girip “Analiz Et” düğmesine basın.</span></div>
+                </div>
+            </div>
+            <div class="dizin-results" id="dizinResults"></div>
+        </section>
+
+        <!-- 🏛️ TÜRKİYAT İSTASYON STATÜ BARI & AKADEMİK ALT BİLGİ -->
+        <footer class="turkiyat-station-footer">
+            <div class="station-footer-inner">
+                <div class="station-footer-left">
+                    <div class="station-footer-logo">
+                        <i class="fa-solid fa-scroll" style="color:var(--accent-gold);"></i>
+                        <span>Bitigey Türkiyat <span class="badge-academic" style="font-size:0.65rem;">v2.0</span></span>
+                    </div>
+                    <p class="station-footer-sub">
+                        Klasik Türk Edebiyatı, Filoloji ve Metin Neşri İçin Bağımsız Dijital Araştırma İstasyonu.
+                    </p>
+                </div>
+
+                <div class="station-footer-middle">
+                    <a href="https://github.com/tunahanhaksever" target="_blank" rel="noopener" class="station-gh-pill" title="Bitigey Projeleri GitHub Sayfası">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub: <strong>@tunahanhaksever</strong></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.65rem; opacity:0.7;"></i>
+                    </a>
+                </div>
+
+                <div class="station-footer-right">
+                    <div class="station-footer-links">
+                        <a href="../index.html"><i class="fa-solid fa-house"></i> Ana Sayfa</a>
+                        <span class="sep">•</span>
+                        <a href="turkiyat-ekosistem.html"><i class="fa-solid fa-sitemap"></i> Ekosistem</a>
+                        <span class="sep">•</span>
+                        <a href="bitigey-seo.html"><i class="fa-solid fa-bolt-lightning"></i> SEO Motoru</a>
+                        <span class="sep">•</span>
+                        <a href="mailto:contact@bitigey.com"><i class="fa-regular fa-envelope"></i> contact@bitigey.com</a>
+                    </div>
+                    <div class="station-footer-copy">
+                        &copy; 2026 Bitigey. Lisansüstü tezler ve akademik metin neşirleri için açık ve ücretsizdir.
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- 📻 KÖG RADYO WORKSTATION WIDGET (FLOATING DOCKED PLAYER) -->
+    <div id="turkiyatRadioWidget" class="turkiyat-radio-widget" style="display:none;">
+        <div class="radio-mini-badge" id="btnExpandMiniRadio" title="KÖG Radyo'yu Genişlet" style="display:none;">
+            <i class="fa-solid fa-tower-broadcast"></i>
+        </div>
+        <div class="radio-widget-content">
+            <div class="radio-widget-header">
+                <div class="radio-widget-brand">
+                    <div class="radio-vinyl-disc" id="radioVinylDisc">
+                        <i class="fa-solid fa-compact-disc" style="color:var(--accent-gold); font-size:0.85rem;"></i>
+                    </div>
+                    <span>KÖG Radyo <span style="font-size:0.65rem; color:#10b981; font-weight:700;">● CANLI</span></span>
+                </div>
+                <div style="display:flex; gap:0.25rem;">
+                    <button id="btnMinimizeRadio" class="btn-icon" style="background:transparent; border:none; color:var(--text-secondary); cursor:pointer; font-size:0.85rem;" title="Küçült"><i class="fa-solid fa-minus"></i></button>
+                    <button id="btnCloseRadioWidget" class="btn-icon" style="background:transparent; border:none; color:var(--text-secondary); cursor:pointer; font-size:0.85rem;" title="Kapat"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+            <select id="radioStationSelect" class="radio-stream-select">
+                <option value="trt_nagme" selected>TRT Nağme (Klasik Türk Sanat Musikisi)</option>
+                <option value="trt_turku">TRT Türkü (Anadolu &amp; Rumeli Halk Türküleri)</option>
+                <option value="study_ambient">Ney &amp; Kanun Taksimleri (Çalışma Odası)</option>
+                <option value="rain_ambient">Kütüphane &amp; Gece Yağmuru Ambiyansı</option>
+            </select>
+            <div class="radio-widget-controls">
+                <button id="btnRadioPlay" class="radio-play-btn" title="Oynat / Durdur">
+                    <i class="fa-solid fa-play" id="radioPlayIcon"></i>
+                </button>
+                <div style="flex:1; display:flex; flex-direction:column; gap:0.2rem;">
+                    <div id="radioTrackTitle" style="font-size:0.75rem; color:var(--text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">7/24 Kesintisiz Edebi Çalışma Yayını</div>
+                    <input type="range" id="radioVolume" min="0" max="1" step="0.05" value="0.8" style="width:100%; accent-color:var(--accent-gold); height:4px;" title="Ses Seviyesi">
+                </div>
+            </div>
+            <audio id="turkiyatAudioElement" preload="none"></audio>
+        </div>
+    </div>
+
+    <!-- 🧩 EKLENTİLER & ARAÇ KUTUSU MODALI -->
+    <div class="ek-modal-backdrop" id="turkiyatPluginsModal">
+        <div class="ek-modal" style="max-width:550px;">
+            <div class="ek-modal-header">
+                <h2><i class="fa-solid fa-puzzle-piece" style="color:var(--accent-gold); margin-right: 8px;"></i> İstasyon Eklentileri &amp; Araçlar</h2>
+                <button class="ek-modal-close" id="btnPluginsModalClose">&times;</button>
+            </div>
+            <p style="color:var(--text-secondary); font-size:0.88rem; margin:0 0 1rem 0;">
+                İhtiyaç duyduğunuz akademik araçları tek tıkla çalışma istasyonunuza ekleyin veya kaldırın.
+            </p>
+            <div class="plugin-grid">
+                <!-- Eklenti 1: KÖG Radyo -->
+                <div class="plugin-card">
+                    <div class="plugin-card-info">
+                        <h4><i class="fa-solid fa-tower-broadcast" style="color:#f59e0b;"></i> KÖG Radyo Mini Oynatıcı</h4>
+                        <p>Edisyon kritik ve transkripsiyon yaparken arka planda 7/24 klasik Türk musikisi, TRT Nağme veya yağmur sesi dinleyin.</p>
+                    </div>
+                    <div>
+                        <button id="btnToggleRadioPlugin" class="ek-btn ek-btn-primary" style="padding:0.45rem 0.9rem; font-size:0.82rem; white-space:nowrap;">
+                            İstasyona Ekle
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Eklenti 2: Hızlı Müsvette Notluğu -->
+                <div class="plugin-card">
+                    <div class="plugin-card-info">
+                        <h4><i class="fa-solid fa-note-sticky" style="color:var(--accent-gold);"></i> Filoloji Müsvette Defteri</h4>
+                        <p>Metin neşri esnasında aklınıza gelen dipnotları ve varyant şüphelerini anında not alın (Otomatik kaydedilir).</p>
+                    </div>
+                    <div>
+                        <button id="btnToggleNotesPlugin" class="ek-btn" style="padding:0.45rem 0.9rem; font-size:0.82rem; white-space:nowrap;">
+                            Etkinleştir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📦 7 FORMATLI DIŞA AKTARIM MODALI -->
+    <div class="ek-modal-backdrop" id="ekExportModal">
+        <div class="ek-modal">
+            <div class="ek-modal-header">
+                <h2><i class="fa-solid fa-file-export" style="color:var(--accent-gold); margin-right: 8px;"></i> 7'li Akademik Dışa Aktarma Paketi</h2>
+                <button class="ek-modal-close" id="ekModalClose">&times;</button>
+            </div>
+
+            <div class="ek-export-options-grid">
+                <div class="ek-export-card" id="btnDownloadWord">
+                    <i class="fa-solid fa-file-word"></i>
+                    <h4>Microsoft Word (.doc)</h4>
+                    <p>Metin gövdesi ve sayfa altı gerçek dipnotlarıyla birlikte Word tez formatında iner.</p>
+                </div>
+                <div class="ek-export-card" id="btnDownloadLatex">
+                    <i class="fa-solid fa-scroll"></i>
+                    <h4>LaTeX (.tex / reledmac)</h4>
+                    <p>Uluslararası edisyon kritik standardı reledmac paketiyle uyumlu, satır numaralı LaTeX kodu.</p>
+                </div>
+                <div class="ek-export-card" id="btnDownloadCsv">
+                    <i class="fa-solid fa-file-excel"></i>
+                    <h4>Excel / Varyant Tablosu (.csv)</h4>
+                    <p>Beyit, lemma, nüsha okunuşları ve varyant tasnifini tablo matrisi olarak Excel ve Sheets uyumlu indirir.</p>
+                </div>
+                <div class="ek-export-card" id="btnDownloadTei">
+                    <i class="fa-solid fa-code"></i>
+                    <h4>TEI-XML (Digital Humanities)</h4>
+                    <p>Uluslararası dijital filoloji standardı. &lt;app&gt;, &lt;lem&gt; ve &lt;rdg&gt; etiketleriyle küresel neşir uyumu.</p>
+                </div>
+                <div class="ek-export-card" id="btnDownloadTxt">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <h4>Düz Metin &amp; Dipnotlar (.txt)</h4>
+                    <p>Not defteri veya sade metin editörleri için temiz mısralar ve numaralı eleştirel aparat dökümü.</p>
+                </div>
+                <div class="ek-export-card" id="btnDownloadJson">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    <h4>Proje Yedeği (.json)</h4>
+                    <p>Tüm nüsha metinlerini, başlık ve kütüphane künyelerini gelecekte tekrar açmak üzere dosya olarak kaydeder.</p>
+                </div>
+                <div class="ek-export-card" id="btnPrint">
+                    <i class="fa-solid fa-print"></i>
+                    <h4>Yazdır / PDF Olarak Kaydet</h4>
+                    <p>Tarayıcınızın yazdırma penceresini açar; akademik mizanpajda temiz bir PDF oluşturur.</p>
+                </div>
+            </div>
+
+            <div style="border-top:1px solid var(--border-station); padding-top:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+                <input type="file" id="fileJsonInput" accept=".json" style="display:none;">
+                <button id="btnImportJson" class="ek-btn">
+                    <i class="fa-solid fa-upload"></i> Kayıtlı JSON Projesini Yükle
+                </button>
+                <span style="font-size:0.8rem; color:var(--text-secondary);">
+                    İletişim: <strong style="color:var(--accent-gold);">contact@bitigey.com</strong>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST BİLDİRİMİ -->
+    <div id="turkiyatToast" class="turkiyat-toast"></div>
+    <div id="ekToast" class="ek-toast" style="display:none;"></div>
+
+    <!-- SCRİPTLER -->
+    <script src="../js/edisyon-kritik-engine.js"></script>
+    <script src="../js/edisyon-kritik-ui.js"></script>
+    <script src="../js/aruz-engine.js"></script>
+    <script src="../js/turkiyat-sozluk-engine.js"></script>
+    <script src="../js/ebced-engine.js"></script>
+    <script src="../js/kodikoloji-engine.js"></script>
+    <script src="../js/turkiyat-rss-engine.js"></script>
+    <script src="../js/kiril-engine.js"></script>
+    <script src="../js/turkiyat-wiki-engine.js"></script>
+    <script src="../js/turkiyat-app.js"></script>
+
+</body>
+</html>

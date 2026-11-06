@@ -1,0 +1,149 @@
+/*
+ * Electron-only application shell.
+ * The browser version keeps its public navigation and station footer.
+ */
+body.desktop-app {
+  --bg-os: #080b11;
+  background: #080b11;
+}
+
+body.desktop-app .turkiyat-splash-overlay {
+  background: #080b11;
+}
+
+body.desktop-app .splash-skip-hint,
+body.desktop-app .station-tagline,
+body.desktop-app .station-title-text .badge-academic,
+body.desktop-app .bitigey-seo-badge,
+body.desktop-app .station-actions a[href^="mailto:"],
+body.desktop-app .station-actions a[href="../index.html"],
+body.desktop-app .turkiyat-station-footer {
+  display: none !important;
+}
+
+body.desktop-app a[target="_blank"],
+body.desktop-app .turkiyat-module a[href*="seo"],
+body.desktop-app .turkiyat-module a[href*="ekosistem"] {
+  display: none !important;
+}
+
+body.desktop-app .turkiyat-top-bar {
+  min-height: 56px;
+  height: 56px;
+  padding: 0 16px !important;
+  flex-wrap: nowrap !important;
+  gap: 16px !important;
+  background: #111722 !important;
+  border-bottom-color: #2a3548 !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.03), 0 8px 22px rgba(0,0,0,0.25) !important;
+}
+
+body.desktop-app .station-brand {
+  min-width: max-content;
+  cursor: default;
+}
+
+body.desktop-app .station-seal {
+  width: 30px;
+  height: 30px;
+  font-size: 0.9rem;
+  background: rgba(212,175,55,0.1);
+}
+
+body.desktop-app .station-title-text h2 {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+}
+
+body.desktop-app .station-actions {
+  gap: 6px;
+  margin-left: auto;
+  flex-wrap: nowrap;
+}
+
+body.desktop-app .station-actions .ek-btn,
+body.desktop-app .station-actions .station-save-badge {
+  min-height: 32px;
+  padding: 0.35rem 0.65rem;
+  border-radius: 5px;
+  font-size: 0.72rem;
+}
+
+body.desktop-app .station-actions .station-save-badge {
+  color: #78d6a5;
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.2);
+}
+
+body.desktop-app .station-actions #btnStationFullscreen {
+  order: 4;
+}
+
+body.desktop-app .turkiyat-dock-wrapper {
+  min-height: 54px;
+  padding: 8px 12px;
+  background: #0e131d;
+  border-bottom: 1px solid #202b3d;
+  box-shadow: none;
+}
+
+body.desktop-app .turkiyat-dock-bar {
+  gap: 5px;
+  padding: 0;
+  scrollbar-width: thin;
+}
+
+body.desktop-app .turkiyat-dock-btn {
+  min-height: 36px;
+  padding: 0.42rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+body.desktop-app .turkiyat-dock-btn:hover {
+  background: #1b2535;
+  border-color: #34445d;
+  transform: none;
+}
+
+body.desktop-app .turkiyat-dock-btn.active {
+  background: #2a2416;
+  border-color: rgba(212,175,55,0.65);
+  box-shadow: inset 0 -2px 0 var(--accent-gold);
+}
+
+body.desktop-app .turkiyat-main-viewport {
+  background: #0a0f17;
+  scrollbar-color: #35445c #0a0f17;
+}
+
+body.desktop-app .turkiyat-main-viewport > .turkiyat-module {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-top: 1.25rem;
+}
+
+body.desktop-app .plugin-tray {
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+body.desktop-app .station-gh-pill,
+body.desktop-app .station-footer-links {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  body.desktop-app .station-actions .station-save-badge,
+  body.desktop-app .station-actions #btnStationTheme {
+    display: none;
+  }
+
+  body.desktop-app .station-actions .ek-btn {
+    min-width: 32px;
+    padding-inline: 0.55rem;
+  }
+}
