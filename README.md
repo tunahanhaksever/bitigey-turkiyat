@@ -56,6 +56,8 @@ Sözlük ve kelime haznesi çalışmaları için
 [DICTIONARY-CONTRIBUTION.md](./DICTIONARY-CONTRIBUTION.md) görev listesini izleyin.
 Güvenlik açığı için public issue açmak yerine [SECURITY.md](./SECURITY.md)
 üzerindeki kanalı kullanın.
+Genel proje sorunları ve geri bildirim için
+`tunahanhakseveresmi@gmail.com` adresine yazabilirsiniz.
 
 ## Lisans
 

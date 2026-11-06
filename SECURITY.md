@@ -3,7 +3,7 @@
 ## Bildirim
 
 Güvenlik açıklarını public issue olarak paylaşmayın. Ayrıntıları
-`contact@bitigey.com` adresine gönderin ve mümkünse şu bilgileri ekleyin:
+`tunahanhakseveresmi@gmail.com` adresine gönderin ve mümkünse şu bilgileri ekleyin:
 
 - Etkilenen sürüm veya commit
 - Yeniden üretme adımları

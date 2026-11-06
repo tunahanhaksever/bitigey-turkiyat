@@ -10,4 +10,4 @@ Kabul edilemez davranışlar:
 - Kişisel veri veya özel yazışma paylaşımı
 - Kötü niyetli kod, spam veya kasıtlı hizmet engelleme
 
-Sorunları proje yöneticisine `contact@bitigey.com` üzerinden bildirebilirsiniz.
+Sorunları proje yöneticisine `tunahanhakseveresmi@gmail.com` üzerinden bildirebilirsiniz.
