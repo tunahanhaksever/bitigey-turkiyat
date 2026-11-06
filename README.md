@@ -37,7 +37,8 @@ için GitHub Releases veya Bitigey'in indirme sunucusu kullanılmalıdır.
 
 ## Python dizinleme motoru
 
-Yerel metin frekansı, satır konumu ve CSV/Excel dışa aktarımı için:
+Yerel metin frekansı, satır konumu ve CSV, Excel, Word uyumlu `.doc` ve
+gerçek `.docx` dışa aktarımı için:
 
 ```powershell
 py -m pip install -r python\requirements.txt

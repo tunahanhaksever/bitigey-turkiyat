@@ -96,25 +96,93 @@ def export_results(
     dataframe: pd.DataFrame,
     csv_path: str | Path,
     excel_path: str | Path | None = None,
+    docx_path: str | Path | None = None,
+    doc_path: str | Path | None = None,
 ) -> None:
-    """Sonuçları UTF-8 BOM'lu CSV'ye ve istenirse Excel'e aktarır."""
+    """Sonuçları CSV, Excel, DOCX ve Word uyumlu DOC olarak aktarır."""
 
     dataframe.to_csv(csv_path, index=False, encoding="utf-8-sig")
     if excel_path is not None:
         dataframe.to_excel(excel_path, index=False, engine="openpyxl")
+    if docx_path is not None:
+        export_docx(dataframe, docx_path)
+    if doc_path is not None:
+        export_doc(dataframe, doc_path)
+
+
+def export_docx(dataframe: pd.DataFrame, path: str | Path) -> None:
+    """Dizin tablosunu gerçek bir DOCX belgesi olarak kaydeder."""
+
+    from docx import Document
+
+    document = Document()
+    document.add_heading("Bitigey Türkiyat — Dizin ve Konkordans", level=1)
+    table = document.add_table(rows=1, cols=4)
+    table.style = "Table Grid"
+    for cell, heading in zip(
+        table.rows[0].cells,
+        ("Kelime", "Frekans", "Satırlar", "Satır sayısı"),
+    ):
+        cell.text = heading
+    for row in dataframe.itertuples(index=False):
+        cells = table.add_row().cells
+        cells[0].text = str(row.kelime)
+        cells[1].text = str(row.frekans)
+        cells[2].text = ", ".join(map(str, row.satirlar))
+        cells[3].text = str(row.satir_sayisi)
+    document.save(path)
+
+
+def _rtf_escape(value: object) -> str:
+    """RTF içinde Türkçe ve transkripsiyon karakterlerini güvenle kodlar."""
+
+    escaped = str(value).replace("\\", r"\\").replace("{", r"\{").replace("}", r"\}")
+    return "".join(
+        char if ord(char) < 128 else rf"\u{ord(char)}?"
+        for char in escaped
+    )
+
+
+def export_doc(dataframe: pd.DataFrame, path: str | Path) -> None:
+    """Word tarafından açılabilen RTF içeriğini .doc uzantısıyla kaydeder."""
+
+    lines = [
+        r"{\rtf1\ansi\deff0",
+        r"{\fonttbl{\f0 Calibri;}}",
+        rf"\f0\fs28 {_rtf_escape('Bitigey Türkiyat - Dizin ve Konkordans')}\par",
+        r"\fs20\par",
+        rf"\b {_rtf_escape('Kelime')}\tab {_rtf_escape('Frekans')}\tab "
+        rf"{_rtf_escape('Satırlar')}\tab {_rtf_escape('Satır sayısı')}\b0\par",
+    ]
+    for row in dataframe.itertuples(index=False):
+        lines.append(
+            rf"{_rtf_escape(row.kelime)}\tab {row.frekans}\tab "
+            rf"{_rtf_escape(', '.join(map(str, row.satirlar)))}\tab "
+            rf"{row.satir_sayisi}\par"
+        )
+    lines.append("}")
+    Path(path).write_text("\n".join(lines), encoding="ascii")
 
 
 def analyze_text(
     text: str,
     csv_path: str | Path = "bitigey_dizin.csv",
     excel_path: str | Path | None = None,
+    docx_path: str | Path | None = None,
+    doc_path: str | Path | None = None,
     min_length: int = 1,
 ) -> pd.DataFrame:
-    """Metni analiz eder, tabloyu terminale yazdırır ve dosyalara aktarır."""
+    """Metni analiz eder, tabloyu terminale yazdırır ve dışa aktarır."""
 
     dataframe = index_to_dataframe(index_text(text, min_length=min_length))
     print(dataframe.to_string(index=False))
-    export_results(dataframe, csv_path=csv_path, excel_path=excel_path)
+    export_results(
+        dataframe,
+        csv_path=csv_path,
+        excel_path=excel_path,
+        docx_path=docx_path,
+        doc_path=doc_path,
+    )
     return dataframe
 
 

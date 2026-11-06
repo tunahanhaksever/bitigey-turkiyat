@@ -1235,6 +1235,7 @@
         var analyzeButton = document.getElementById('btnDizinAnalyze');
         var clearButton = document.getElementById('btnDizinClear');
         var exportButton = document.getElementById('btnDizinExport');
+        var wordButton = document.getElementById('btnDizinWord');
         var summary = document.getElementById('dizinSummary');
         var results = document.getElementById('dizinResults');
         var ignoreStopwords = document.getElementById('dizinIgnoreStopwords');
@@ -1352,8 +1353,35 @@
             showToast('Dizin CSV olarak indirildi.');
         }
 
+        function downloadWord() {
+            if (!latestRows.length) {
+                showToast('Önce dizin analizini çalıştırınız.');
+                return;
+            }
+            var rows = latestRows.map(function(row) {
+                var context = row.contexts.map(function(item) {
+                    return 's.' + item.line + ': ' + item.text;
+                }).join(' | ');
+                return '<tr><td>' + escapeHtml(row.word) + '</td><td>' + row.count +
+                    '</td><td>' + escapeHtml(context) + '</td></tr>';
+            }).join('');
+            var html = '<!doctype html><html><head><meta charset="utf-8"><title>Bitigey Dizin</title>' +
+                '<style>body{font-family:Calibri,Arial,sans-serif}table{border-collapse:collapse;width:100%}' +
+                'th,td{border:1px solid #777;padding:6px;text-align:left}th{background:#eee}</style></head>' +
+                '<body><h1>Bitigey Türkiyat — Dizin ve Konkordans</h1>' +
+                '<table><thead><tr><th>Kelime</th><th>Frekans</th><th>Bağlam / satır</th></tr></thead>' +
+                '<tbody>' + rows + '</tbody></table></body></html>';
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(new Blob(['\uFEFF', html], { type: 'application/msword' }));
+            link.download = 'bitigey-dizin-konkordans.doc';
+            link.click();
+            URL.revokeObjectURL(link.href);
+            showToast('Dizin Word (.doc) olarak indirildi.');
+        }
+
         analyzeButton.addEventListener('click', analyze);
         exportButton.addEventListener('click', downloadCsv);
+        if (wordButton) wordButton.addEventListener('click', downloadWord);
         clearButton.addEventListener('click', function() {
             input.value = '';
             latestRows = [];
