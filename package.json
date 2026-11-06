@@ -51,8 +51,7 @@
     ],
     "win": {
       "target": "nsis",
-      "artifactName": "Bitigey-Turkiyat-Setup.exe",
-      "icon": "img/favicon.png"
+      "artifactName": "Bitigey-Turkiyat-Setup.exe"
     },
     "nsis": {
       "oneClick": false,
