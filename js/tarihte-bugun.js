@@ -95,6 +95,7 @@
                 var parsed = typeof cached === 'string' ? JSON.parse(cached) : cached;
                 if (parsed && parsed.liveEvent) {
                     baseData.event = parsed.liveEvent;
+                    baseData.sourceUrl = parsed.sourceUrl || '';
                     baseData.isLiveRss = true;
                 }
             } catch (e) {}
@@ -223,7 +224,7 @@
         var shareText = encodeURIComponent('📅 ' + dateFormatted + " Tarihte Bugün Edebiyat:\n\n" + data.event + "\n\n📖 Günün Şiiri: " + data.poetName + " - " + data.poemTitle + "\n\nBitigey'de Keşfet: " + window.location.href);
 
         var liveBadge = data.isLiveRss ? 
-            '<span class="tb-live-rss-pill"><span class="tb-live-dot-green"></span> Canlı RSS Güncel</span>' : '';
+            '<span class="tb-live-rss-pill"><span class="tb-live-dot-green"></span> Canlı kaynak güncel</span>' : '';
 
         return '' +
             '<div class="tb-glass-card">' +
@@ -307,7 +308,7 @@
         var shareText = encodeURIComponent('📅 ' + dateFormatted + " Tarihte Bugün Edebiyat:\n\n" + data.event + "\n\n📖 Günün Şiiri: " + data.poetName + " - " + data.poemTitle + "\n\nBitigey: " + window.location.href);
 
         var liveBadge = data.isLiveRss ? 
-            '<span class="tb-live-rss-pill"><span class="tb-live-dot-green"></span> Canlı RSS Güncel</span>' : '';
+            '<span class="tb-live-rss-pill"><span class="tb-live-dot-green"></span> Canlı kaynak güncel</span>' : '';
 
         return '' +
             '<div class="tb-glass-card tb-portal-card">' +
@@ -324,6 +325,7 @@
                         '<button type="button" class="tb-btn-nav tb-btn-random" id="tb-btn-random" title="Rastgele Güne Git"><i class="fa-solid fa-shuffle"></i></button>' +
                     '</div>' +
                 '</div>' +
+                (data.sourceUrl ? '<div class="tb-source-line"><i class="fa-solid fa-link"></i> Canlı olay kaynağı: <a href="' + data.sourceUrl + '" target="_blank" rel="noopener noreferrer">Türkçe Wikipedia On This Day</a></div>' : '') +
 
                 '<div class="tb-body-grid">' +
                     '<div class="tb-event-col">' +
@@ -378,6 +380,7 @@
                         '</div>' +
                     '</div>' +
                 '</div>' +
+                (data.sourceUrl ? '<div class="tb-source-line"><i class="fa-solid fa-link"></i> Canlı olay kaynağı: <a href="' + data.sourceUrl + '" target="_blank" rel="noopener noreferrer">Türkçe Wikipedia On This Day</a></div>' : '') +
             '</div>';
     }
 
@@ -404,34 +407,40 @@
         var wikiUrl = 'https://tr.wikipedia.org/api/rest_v1/feed/onthisday/all/' + (month < 10 ? '0' + month : month) + '/' + (day < 10 ? '0' + day : day);
 
         fetch(wikiUrl)
-            .then(function(res) { return res.json(); })
+            .then(function(res) {
+                if (!res.ok) {
+                    throw new Error('Canlı kaynak HTTP ' + res.status);
+                }
+                return res.json();
+            })
             .then(function(data) {
                 if (data && (data.selected || data.events || data.births)) {
                     var candidateList = (data.selected || []).concat(data.events || []).concat(data.births || []);
-                    
-                    // Edebiyat, şair, yazar, kitap, şiir veya sanat ile ilgili olayları filtrele
+
                     var literaryKeywords = ['edebiyat', 'şair', 'yazar', 'şiir', 'kitap', 'roman', 'tiyatro', 'sanat', 'dergi', 'gazete', 'akım'];
-                    var matchedEvent = null;
+                    var rankedCandidates = candidateList.map(function(candidate) {
+                        var text = String(candidate.text || '').trim();
+                        var lower = text.toLocaleLowerCase('tr-TR');
+                        var score = literaryKeywords.reduce(function(total, keyword) {
+                            return total + (lower.indexOf(keyword) !== -1 ? 2 : 0);
+                        }, 0);
+                        if (candidate.year) score += 1;
+                        if (text.length >= 45 && text.length <= 280) score += 1;
+                        return { candidate: candidate, text: text, score: score };
+                    }).filter(function(item) {
+                        return item.text.length > 0;
+                    }).sort(function(left, right) {
+                        return right.score - left.score;
+                    });
 
-                    for (var i = 0; i < candidateList.length; i++) {
-                        var text = candidateList[i].text || '';
-                        var lower = text.toLowerCase();
-                        var hasKey = literaryKeywords.some(function(k) { return lower.indexOf(k) !== -1; });
-                        if (hasKey) {
-                            var year = candidateList[i].year ? candidateList[i].year + ' - ' : '';
-                            matchedEvent = day + ' ' + MONTH_NAMES[month - 1] + ' ' + year + text;
-                            break;
-                        }
-                    }
-
-                    if (!matchedEvent && candidateList.length > 0) {
-                        // Edebi özel bulunamazsa ilk önemli tarihi olayı al
-                        var first = candidateList[0];
-                        matchedEvent = day + ' ' + MONTH_NAMES[month - 1] + ' ' + (first.year ? first.year + ' - ' : '') + first.text;
-                    }
-
-                    if (matchedEvent) {
-                        var payload = { liveEvent: matchedEvent, updated: Date.now() };
+                    var best = rankedCandidates[0];
+                    if (best) {
+                        var selected = best.candidate;
+                        var year = selected.year ? selected.year + ' - ' : '';
+                        var matchedEvent = day + ' ' + MONTH_NAMES[month - 1] + ' ' + year + best.text;
+                        var sourceUrl = 'https://tr.wikipedia.org/api/rest_v1/feed/onthisday/all/' +
+                            (month < 10 ? '0' + month : month) + '/' + (day < 10 ? '0' + day : day);
+                        var payload = { liveEvent: matchedEvent, sourceUrl: sourceUrl, updated: Date.now() };
                         liveRssCache[cacheKey] = payload;
                         localStorage.setItem(cacheKey, JSON.stringify(payload));
 
@@ -444,7 +453,7 @@
                 }
             })
             .catch(function(err) {
-                // Sessiz hata yakalama: Yerel zengin veri havuzu kesintisiz devrede kalır
+                console.warn('Tarihte Bugün canlı kaynak güncellenemedi; yerel kayıt korunuyor.', err);
             });
     }
 

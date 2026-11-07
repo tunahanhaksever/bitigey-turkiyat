@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark-mode">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Tarihte Bugün Edebiyat | 365 Gün Edebi Takvim &amp; Günün Şiiri - Bitigey</title>
+    <meta name="description" content="Tarihte bugün Türk ve Dünya edebiyatında neler oldu? Her güne özel tarihi edebiyat olayları, günün seçilen şiiri, şair biyografileri ve nadir edebi sözcükler Bitigey'de!">
+    <meta name="keywords" content="tarihte bugün edebiyat, günün şiiri, günün şairi, edebiyat takvimi, türk edebiyatı tarihi, bitigey, şiirler, şairler, 365 gün edebiyat">
+    <meta name="author" content="Bitigey &amp; Tunahan Haksever">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <link rel="alternate" type="application/rss+xml" title="Bitigey RSS Beslemesi" href="https://www.bitigey.com/rss.xml">
+    <link rel="canonical" href="https://www.bitigey.com/html/tarihte-bugun.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.bitigey.com/html/tarihte-bugun.html">
+    <meta property="og:title" content="Tarihte Bugün Edebiyat | 365 Gün Edebi Takvim - Bitigey">
+    <meta property="og:description" content="Tarihte bugün Türk edebiyatında ne oldu? Günün şiirini ve şairini anında keşfet.">
+    <meta property="og:image" content="https://www.bitigey.com/img/bitigey-og-banner.jpg">
+    <meta property="og:site_name" content="Bitigey">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tarihte Bugün Edebiyat | Bitigey">
+    <meta name="twitter:description" content="Her gün yeni bir şiir, yeni bir şair, yaşayan bir edebi hafıza.">
+    <meta name="twitter:image" content="https://www.bitigey.com/img/bitigey-og-banner.jpg">
+
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/premium-base.css">
+    <link rel="stylesheet" href="../css/responsive-fix.css?v=2">
+    <link rel="stylesheet" href="../css/tarihte-bugun.css">
+
+    <style>
+        .month-selector-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 14px 20px;
+            max-width: 1100px;
+            margin: 0 auto 30px;
+            scrollbar-width: thin;
+        }
+        .month-pill-btn {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.7);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+        }
+        .month-pill-btn:hover,
+        .month-pill-btn.active {
+            background: #ffd700;
+            color: #1a0a2e;
+            border-color: #ffd700;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+        }
+        .days-grid-selector {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 0 15px;
+        }
+        .day-num-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #eceff4;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .day-num-btn:hover,
+        .day-num-btn.active {
+            background: #a29bfe;
+            color: #1a0a2e;
+            border-color: #a29bfe;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <!-- UNIVERSAL NAVBAR -->
+    <header>
+        <div class="navbar" style="max-width: 1200px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between;">
+            <a href="../index.html" class="logo">bitigey<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Ana Sayfa</a></li>
+                <li class="has-dropdown">
+                    <a href="eserler.html" class="dropdown-toggle">İçerikler <i class="fa-solid fa-chevron-down dd-arrow"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="turkiyat.html" style="font-weight:700;color:#c99738;"><span class="dd-icon" style="background:rgba(201,151,56,0.15);color:#c99738;"><i class="fa-solid fa-graduation-cap"></i></span> Bitigey Türkiyat</a>
+                        <a href="kitaplar.html"><span class="dd-icon" style="background:rgba(124,58,237,0.15);color:#a29bfe;"><i class="fa-solid fa-book-bookmark"></i></span> Kitaplar (Açık Kütüphane)</a>
+                        <a href="eserler.html"><span class="dd-icon"><i class="fa-solid fa-book-open"></i></span> Tüm Eserler</a>
+                        <a href="edisyon-kritik.html" style="font-weight:700;color:#c99738;"><span class="dd-icon" style="background:rgba(201,151,56,0.15);color:#c99738;"><i class="fa-solid fa-scroll"></i></span> Edisyon Kritik &amp; Varyant Tezgahı</a>
+                        <a href="tarihte-bugun.html" style="font-weight:700;color:#ffd700;"><span class="dd-icon" style="background:rgba(255,215,0,0.15);color:#ffd700;"><i class="fa-solid fa-calendar-day"></i></span> Tarihte Bugün Edebiyat</a>
+                        <a href="kog-radyo.html" style="font-weight:700;color:#f59e0b;"><span class="dd-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b;"><i class="fa-solid fa-tower-broadcast"></i></span> KÖG Radyo (Canlı)</a>
+                        <a href="forum.html"><span class="dd-icon" style="background:rgba(162,155,254,0.15);color:#a29bfe;"><i class="fa-solid fa-comments"></i></span> Bitigey Meydan</a>
+                        <a href="haber.html"><span class="dd-icon" style="background:rgba(231,76,60,0.15);color:#e74c3c;"><i class="fa-solid fa-newspaper"></i></span> Bitigey Haber</a>
+                        <a href="ucretsiz-reklam.html"><span class="dd-icon" style="background:rgba(46,204,113,0.15);color:#2ecc71;"><i class="fa-solid fa-handshake"></i></span> İş Ortaklığı</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="yazi-paylas.html"><span class="dd-icon" style="background:rgba(230,126,34,0.15);color:#e67e22;"><i class="fa-solid fa-plus"></i></span> Eser Paylaş</a>
+                    </div>
+                </li>
+                <li><a href="turkiyat.html" style="color:#c99738;font-weight:700;"><i class="fa-solid fa-graduation-cap" style="color:#c99738;"></i> Türkiyat</a></li>
+                <li><a href="tarihte-bugun.html" class="active" style="color:#ffd700;"><i class="fa-solid fa-calendar-day" style="color:#ffd700;"></i> Tarihte Bugün</a></li>
+                <li><a href="kog-radyo.html" style="color:#f59e0b;font-weight:700;"><i class="fa-solid fa-tower-broadcast" style="color:#f59e0b;"></i> KÖG Radyo</a></li>
+                <li><a href="kog-dergisi.html">Kög Dergisi</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div id="auth-container">
+                    <a href="login.html" class="login-btn"><i class="fa-solid fa-user"></i> <span class="login-text">Giriş</span></a>
+                </div>
+                <button class="btn-icon mobile-toggle" id="mobile-toggle-btn" aria-label="Menü"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <aside class="drawer" id="mobile-drawer" aria-label="Mobil menü">
+        <div class="drawer-header">
+            <a href="../index.html" class="logo" style="font-size:1.3rem;">bitigey<span>.</span></a>
+            <button class="btn-icon" id="drawer-close-btn" aria-label="Kapat"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul class="drawer-links">
+            <li><a href="../index.html"><i class="fa-solid fa-house"></i> Ana Sayfa</a></li>
+            <li><a href="turkiyat.html" style="color:#c99738;font-weight:700;"><i class="fa-solid fa-graduation-cap"></i> Bitigey Türkiyat</a></li>
+            <li><a href="kog-radyo.html" style="color:#f59e0b;font-weight:700;"><i class="fa-solid fa-tower-broadcast"></i> KÖG Radyo (Canlı)</a></li>
+            <li><a href="tarihte-bugun.html" style="color:#ffd700;"><i class="fa-solid fa-calendar-day"></i> Tarihte Bugün Edebiyat</a></li>
+            <li><a href="kitaplar.html"><i class="fa-solid fa-book-bookmark" style="color:#a29bfe;"></i> Kitaplar</a></li>
+            <li><a href="eserler.html"><i class="fa-solid fa-book-open"></i> Eserler</a></li>
+            <li><a href="forum.html"><i class="fa-solid fa-comments"></i> Bitigey Meydan</a></li>
+            <li><a href="haber.html"><i class="fa-solid fa-newspaper"></i> Bitigey Haber</a></li>
+            <li><a href="kog-dergisi.html"><i class="fa-solid fa-scroll"></i> Kög Dergisi</a></li>
+            <li><a href="hakkimizda.html"><i class="fa-solid fa-circle-info"></i> Hakkımızda</a></li>
+        </ul>
+    </aside>
+
+    <main style="min-height: 85vh;">
+        <!-- HERO BANNER -->
+        <section class="tb-hero-banner tb-archive-hero text-center">
+            <div class="tb-badge-pill tb-archive-badge">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color:#ffd700;"></i> 365 GÜN EDEBİ ZAMAN MAKİNESİ
+            </div>
+            <h1 class="tb-main-heading font-serif">Tarihte Bugün Edebiyat</h1>
+            <p class="tb-sub-lead" style="max-width: 680px;">Türk ve Dünya edebiyatının yaşayan dijital hafızası. Her günün bir şiiri, bir şairi ve unutulmaz bir hatırası var.</p>
+            <div class="tb-archive-stats" aria-label="Arşiv özellikleri">
+                <span><i class="fa-solid fa-calendar-days"></i> 365 gün</span>
+                <span><i class="fa-solid fa-feather-pointed"></i> Günün şiiri</span>
+                <span><i class="fa-solid fa-tower-broadcast"></i> Kaynak kontrollü</span>
+            </div>
+        </section>
+
+        <!-- DİNAMİK PORTAL KAPSAYICISI (CAM KART) -->
+        <div class="tb-archive-content">
+            <div id="tarihte-bugun-full-page"></div>
+        </div>
+
+        <!-- 365 GÜN TAKVİM MATRİSİ -->
+        <section class="tb-archive-calendar-section">
+            <div class="tb-calendar-matrix-card">
+                <div style="font-size:0.78rem;font-weight:800;letter-spacing:2px;color:rgba(255,215,0,0.85);margin-bottom:8px;text-transform:uppercase;">
+                    <i class="fa-solid fa-calendar-days"></i> Tüm Yılı Keşfedin
+                </div>
+                <h3 style="color:#fff;margin:0 0 20px;font-size:1.5rem;" class="font-serif">365 Gün Edebi Takvim Çizelgesi</h3>
+                <p style="color:rgba(255,255,255,0.6);font-size:0.92rem;margin:0 auto 24px;max-width:550px;">
+                    Aşağıdaki aylardan ve günlerden dilediğinizi seçerek o tarihte yaşanan edebiyat olayına ve günün şiirine anında ışınlanabilirsiniz.
+                </p>
+
+                <!-- Ay Seçici -->
+                <div class="month-selector-bar" id="month-bar">
+                    <button class="month-pill-btn" data-m="1">Ocak</button>
+                    <button class="month-pill-btn" data-m="2">Şubat</button>
+                    <button class="month-pill-btn" data-m="3">Mart</button>
+                    <button class="month-pill-btn" data-m="4">Nisan</button>
+                    <button class="month-pill-btn" data-m="5">Mayıs</button>
+                    <button class="month-pill-btn" data-m="6">Haziran</button>
+                    <button class="month-pill-btn" data-m="7">Temmuz</button>
+                    <button class="month-pill-btn" data-m="8">Ağustos</button>
+                    <button class="month-pill-btn" data-m="9">Eylül</button>
+                    <button class="month-pill-btn" data-m="10">Ekim</button>
+                    <button class="month-pill-btn" data-m="11">Kasım</button>
+                    <button class="month-pill-btn" data-m="12">Aralık</button>
+                </div>
+
+                <!-- Gün Seçici Izgara -->
+                <div class="days-grid-selector" id="days-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background: rgba(0,0,0,0.6); border-top: 1px solid rgba(255,255,255,0.07); padding: 50px 20px 30px; text-align:center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <a href="../index.html" class="logo" style="margin-bottom: 12px; display: inline-block; font-size: 1.5rem;">bitigey<span style="color: #ffd700;">.</span></a>
+            <p style="color: rgba(255,255,255,0.45); font-size: 0.88rem; line-height: 1.6; margin-bottom: 20px;">
+                Türk edebiyatının dijital hafızası. Her gün yenilenen edebi takvim, şiirler ve yaşayan kültürel miras.
+            </p>
+            <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">
+                &copy; 2026 Bitigey. Tüm hakları saklıdır.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main-app.js"></script>
+    <script src="../js/edebiyat-sozlugu-data.js"></script>
+    <script src="../js/poetry-validator.js"></script>
+    <script src="../js/poetry-rss-sync.js"></script>
+    <script src="../js/tarihte-bugun-data.js"></script>
+    <script src="../js/tarihte-bugun.js"></script>
+
+    <script>
+        // Sayfaya özel Ay ve Gün seçici mantığı
+        (function() {
+            var currentMonth = new Date().getMonth() + 1;
+            var currentDay = new Date().getDate();
+
+            var daysInMonths = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+            function renderDays(m) {
+                var grid = document.getElementById('days-grid');
+                if (!grid) return;
+                var totalDays = daysInMonths[m - 1];
+                var html = '';
+                for (var d = 1; d <= totalDays; d++) {
+                    var isAct = (m === currentMonth && d === currentDay) ? ' active' : '';
+                    html += '<button type="button" class="day-num-btn' + isAct + '" data-day="' + d + '">' + d + '</button>';
+                }
+                grid.innerHTML = html;
+
+                // Gün butonları dinleyicisi
+                grid.querySelectorAll('.day-num-btn').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        grid.querySelectorAll('.day-num-btn').forEach(function(b) { b.classList.remove('active'); });
+                        this.classList.add('active');
+                        var chosenDay = parseInt(this.getAttribute('data-day'));
+                        currentDay = chosenDay;
+                        if (window.setTarihteBugunDate) {
+                            window.setTarihteBugunDate(currentMonth, chosenDay);
+                            var cardEl = document.getElementById('tarihte-bugun-full-page');
+                            if (cardEl) {
+                                cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Ay barını aktive et
+            var monthBtns = document.querySelectorAll('.month-pill-btn');
+            monthBtns.forEach(function(btn) {
+                var mVal = parseInt(btn.getAttribute('data-m'));
+                if (mVal === currentMonth) btn.classList.add('active');
+
+                btn.addEventListener('click', function() {
+                    monthBtns.forEach(function(b) { b.classList.remove('active'); });
+                    this.classList.add('active');
+                    currentMonth = mVal;
+                    renderDays(currentMonth);
+                    if (window.setTarihteBugunDate) {
+                        window.setTarihteBugunDate(currentMonth, 1);
+                    }
+                });
+            });
+
+            renderDays(currentMonth);
+        })();
+    </script>
+
+<script src="../js/global-footer.js" defer></script>
+</body>
+</html>
